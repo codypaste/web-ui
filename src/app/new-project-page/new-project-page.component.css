@@ -1,0 +1,32 @@
+.grid-container {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: max-content 1fr 1fr 1fr 1fr 1fr max-content;
+  grid-gap: 0;
+  grid-template-areas: "Header Header Header Header Header Header Header""Menu Editor Editor Editor Editor Editor Editor""Menu Editor Editor Editor Editor Editor Editor""Menu Editor Editor Editor Editor Editor Editor""Menu Editor Editor Editor Editor Editor Editor""Menu Editor Editor Editor Editor Editor Editor""Footer Footer Footer Footer Footer Footer Footer";
+}
+
+.Header {
+  grid-area: Header;
+}
+
+.Menu {
+  grid-area: Menu;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-right: 1px solid #eee;
+}
+
+.Editor {
+  grid-area: Editor;
+  padding: 1rem;
+}
+
+.Footer {
+  grid-area: Footer;
+  background-color: #303F9F;
+  color: #C5CAE9;
+}

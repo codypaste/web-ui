@@ -1,0 +1,41 @@
+<div class="grid-container">
+  <div class="Header">
+    <app-header></app-header>
+  </div>
+  <div class="Menu">
+    <app-project-menu></app-project-menu>
+  </div>
+  <div class="Editor">
+
+    <div class="btn-group" role="group">
+      <div *ngFor="let editor of editors$ | async; index as i">
+        <button (click)="switchActiveEditor(i)" type="button" class="btn btn-light" [ngClass]="{
+            'active': editor.id === (activeEditorId$ | async)
+          }">{{editor.title}}</button>
+        <button type="button" class="btn btn-light" [ngClass]="{
+            'active': editor.id === (activeEditorId$ | async)
+          }"
+          *ngIf="editor.id === (activeEditorId$ | async)">
+          <fa-icon (click)="onRemoveEditor(i)" icon="times"></fa-icon>
+        </button>
+      </div>
+      <button (click)="onAddEditor()" type="button" class="btn btn-link">
+        <fa-icon icon="plus"></fa-icon>
+      </button>
+    </div>
+
+    <div class="form-inline mt-1">
+      <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="unnamed">
+
+      <select class="form-control mb-2 mr-sm-2">
+          <option value="public">Plain text</option>
+          <option value="private">Javascript</option>
+        </select>
+    </div>
+
+    <app-editor></app-editor>
+  </div>
+  <div class="Footer">
+    <app-footer></app-footer>
+  </div>
+</div>

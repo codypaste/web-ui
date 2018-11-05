@@ -8,6 +8,7 @@ export interface NewProjectState {
   activeEditorId: string;
   editorsIds: string[];
   editors: EditorModel[];
+  numberOfOpenedEditors: number;
 }
 
 const initialEditor = new EditorModel();
@@ -17,7 +18,8 @@ initialEditor.title = 'unnamed';
 const initialState: NewProjectState = {
   activeEditorId: initialEditor.id,
   editorsIds: [],
-  editors: [initialEditor]
+  editors: [initialEditor],
+  numberOfOpenedEditors: 1,
 };
 
 export function reducer(state = initialState, action: fromActions.ALL_ACTIONS): NewProjectState {
@@ -28,7 +30,8 @@ export function reducer(state = initialState, action: fromActions.ALL_ACTIONS): 
       newEditor.title = 'unnamed';
       const newState = {
         ...state,
-        editors: [...state.editors, newEditor]
+        editors: [...state.editors, newEditor],
+        numberOfOpenedEditors: state.numberOfOpenedEditors + 1
       };
       return newState;
     }
@@ -37,6 +40,46 @@ export function reducer(state = initialState, action: fromActions.ALL_ACTIONS): 
       return {
         ...state,
         activeEditorId: state.editors[action.payload].id,
+      };
+    }
+
+    case fromActions.CLOSE_EDITOR: {
+      const filtered = state.editors.filter(e => e.id !== state.editors[action.payload].id);
+      return {
+        ...state,
+        editors: filtered,
+        activeEditorId: filtered[0].id,
+        numberOfOpenedEditors: state.numberOfOpenedEditors - 1
+      };
+    }
+
+    case fromActions.SET_CONTENT_FOR_ACTIVE_EDITOR: {
+      const newEditors = state.editors.map((e) => {
+        if (e.id !== state.activeEditorId) {
+          return e;
+        }
+
+        e.content = action.payload;
+        return e;
+      });
+      return {
+        ...state,
+        editors: newEditors,
+      };
+    }
+
+    case fromActions.SET_TITLE_FOR_ACTIVE_EDITOR: {
+      const newEditors = state.editors.map((e) => {
+        if (e.id !== state.activeEditorId) {
+          return e;
+        }
+
+        e.title = action.payload;
+        return e;
+      });
+      return {
+        ...state,
+        editors: newEditors,
       };
     }
     default:
@@ -54,4 +97,9 @@ export const getEditors = createSelector(
 export const getActiveEditor = createSelector(
   getNewProjectState,
   (state: NewProjectState) => state.activeEditorId
+);
+
+export const getNumberOfOpenedEditors = createSelector(
+  getNewProjectState,
+  (state: NewProjectState) => state.numberOfOpenedEditors
 );

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { NewProjectState, getEditors, getActiveEditor} from '../_store/newProjectStore';
+import { NewProjectState, getEditors, getActiveEditor, getNumberOfOpenedEditors} from '../_store/newProjectStore';
 import * as fromActions from '../_store/actions';
 import { EditorModel } from '../_models/EditorModel';
 
@@ -14,12 +14,25 @@ export class NewProjectPageComponent implements OnInit {
 
   editors$: Observable<EditorModel[]>;
   activeEditorId$: Observable<string>;
+  numberOfOpenedEditors$: Observable<number>;
+  fileName: string;
 
   constructor(
     private store: Store<NewProjectState>
   ) {
     this.editors$ = store.select(getEditors);
     this.activeEditorId$ = store.select(getActiveEditor);
+    this.numberOfOpenedEditors$ = store.select(getNumberOfOpenedEditors);
+
+    this.activeEditorId$.subscribe(editorId => {
+      this.editors$.subscribe(editors => {
+        editors.forEach(editor => {
+          if (editor.id === editorId) {
+            this.fileName = editor.title || '';
+          }
+        });
+      });
+    });
   }
 
   ngOnInit() {
@@ -33,8 +46,15 @@ export class NewProjectPageComponent implements OnInit {
     this.store.dispatch(new fromActions.SwitchEditorAction(index));
   }
 
-  onRemoveEditor(index) {
-    console.log('editor delete', index);
+  onCloseEditor(index) {
+    const remove = confirm('Are you sure?');
+    if (remove) {
+      this.store.dispatch(new fromActions.CloseEditorAction(index));
+    }
+  }
+
+  onFilenameChange() {
+    this.store.dispatch(new fromActions.SetTitleForActiveEditorAction(this.fileName));
   }
 
 }

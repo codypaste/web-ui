@@ -32,8 +32,8 @@ export class EditorDirective {
       viewportMargin: 20,
     });
 
-    this.editors$ = store.select(getEditors);
-    this.activeEditorId$ = store.select(getActiveEditor);
+    this.editors$ = store.pipe(select(getEditors));
+    this.activeEditorId$ = store.pipe(select(getActiveEditor));
 
     this.activeEditorId$.subscribe(editorId => {
       this.editors$.subscribe(editors => {

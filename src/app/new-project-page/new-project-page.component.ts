@@ -20,9 +20,9 @@ export class NewProjectPageComponent implements OnInit {
   constructor(
     private store: Store<NewProjectState>
   ) {
-    this.editors$ = store.select(getEditors);
-    this.activeEditorId$ = store.select(getActiveEditor);
-    this.numberOfOpenedEditors$ = store.select(getNumberOfOpenedEditors);
+    this.editors$ = store.pipe(select(getEditors));
+    this.activeEditorId$ = store.pipe(select(getActiveEditor));
+    this.numberOfOpenedEditors$ = store.pipe(select(getNumberOfOpenedEditors));
 
     this.activeEditorId$.subscribe(editorId => {
       this.editors$.subscribe(editors => {

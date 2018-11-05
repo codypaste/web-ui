@@ -23,7 +23,7 @@ const loadScipt = async () => {
 export class EditorDirective {
   editor: any;
   editors$: Observable<EditorModel[]>;
-  activeEditorId$: Observable<string>;
+  activeEditor$: Observable<EditorModel>;
   constructor(el: ElementRef,
     private store: Store<NewProjectState>) {
     this.editor = new CodeMirror.fromTextArea(el.nativeElement, {
@@ -33,16 +33,10 @@ export class EditorDirective {
     });
 
     this.editors$ = store.pipe(select(getEditors));
-    this.activeEditorId$ = store.pipe(select(getActiveEditor));
+    this.activeEditor$ = store.pipe(select(getActiveEditor));
 
-    this.activeEditorId$.subscribe(editorId => {
-      this.editors$.subscribe(editors => {
-        editors.forEach(editor => {
-          if (editor.id === editorId) {
-            this.editor.setValue(editor.content || '');
-          }
-        });
-      });
+    this.activeEditor$.subscribe(editor => {
+      this.editor.setValue(editor.content || '');
     });
 
     this.editor.on('blur', () => {

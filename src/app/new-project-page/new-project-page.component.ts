@@ -13,25 +13,19 @@ import { EditorModel } from '../_models/EditorModel';
 export class NewProjectPageComponent implements OnInit {
 
   editors$: Observable<EditorModel[]>;
-  activeEditorId$: Observable<string>;
-  numberOfOpenedEditors$: Observable<number>;
+  activeEditor$: Observable<EditorModel>;
+  numberOfOpenedEditors$: Observable<Number>;
   fileName: string;
 
   constructor(
     private store: Store<NewProjectState>
   ) {
     this.editors$ = store.pipe(select(getEditors));
-    this.activeEditorId$ = store.pipe(select(getActiveEditor));
+    this.activeEditor$ = store.pipe(select(getActiveEditor));
     this.numberOfOpenedEditors$ = store.pipe(select(getNumberOfOpenedEditors));
 
-    this.activeEditorId$.subscribe(editorId => {
-      this.editors$.subscribe(editors => {
-        editors.forEach(editor => {
-          if (editor.id === editorId) {
-            this.fileName = editor.title || '';
-          }
-        });
-      });
+    this.activeEditor$.subscribe(editor => {
+      this.fileName = editor.title;
     });
   }
 

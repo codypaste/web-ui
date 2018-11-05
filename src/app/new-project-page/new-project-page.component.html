@@ -10,12 +10,12 @@
     <div class="btn-group" role="group">
       <div *ngFor="let editor of editors$ | async; index as i">
         <button (click)="switchActiveEditor(i)" type="button" class="btn btn-light" [ngClass]="{
-            'active': editor.id === (activeEditorId$ | async)
+            'active': editor.id === (activeEditor$ | async).id
           }">{{editor.title || 'unnamed'}}</button>
         <button type="button" class="btn btn-light" [ngClass]="{
-            'active': editor.id === (activeEditorId$ | async)
+            'active': editor.id === (activeEditor$ | async).id
           }"
-          *ngIf="editor.id === (activeEditorId$ | async) && (numberOfOpenedEditors$ | async) > 1">
+          *ngIf="editor.id === (activeEditor$ | async).id && (numberOfOpenedEditors$ | async) > 1">
           <fa-icon (click)="onCloseEditor(i)" icon="times"></fa-icon>
         </button>
       </div>

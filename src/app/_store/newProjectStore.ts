@@ -6,9 +6,9 @@ import * as fromActions from './actions';
 
 export interface NewProjectState {
   activeEditorId: string;
-  editorsIds: string[];
   editors: EditorModel[];
   numberOfOpenedEditors: number;
+  activeEditor: EditorModel;
 }
 
 const initialEditor = new EditorModel();
@@ -17,9 +17,9 @@ initialEditor.title = 'unnamed';
 
 const initialState: NewProjectState = {
   activeEditorId: initialEditor.id,
-  editorsIds: [],
   editors: [initialEditor],
   numberOfOpenedEditors: 1,
+  activeEditor: initialEditor,
 };
 
 export function reducer(state = initialState, action: fromActions.ALL_ACTIONS): NewProjectState {
@@ -40,6 +40,7 @@ export function reducer(state = initialState, action: fromActions.ALL_ACTIONS): 
       return {
         ...state,
         activeEditorId: state.editors[action.payload].id,
+        activeEditor: state.editors[action.payload]
       };
     }
 
@@ -49,37 +50,44 @@ export function reducer(state = initialState, action: fromActions.ALL_ACTIONS): 
         ...state,
         editors: filtered,
         activeEditorId: filtered[0].id,
+        activeEditor: filtered[0],
         numberOfOpenedEditors: state.numberOfOpenedEditors - 1
       };
     }
 
     case fromActions.SET_CONTENT_FOR_ACTIVE_EDITOR: {
+      let editor;
       const newEditors = state.editors.map((e) => {
         if (e.id !== state.activeEditorId) {
           return e;
         }
 
         e.content = action.payload;
+        editor = e;
         return e;
       });
       return {
         ...state,
         editors: newEditors,
+        activeEditor: editor,
       };
     }
 
     case fromActions.SET_TITLE_FOR_ACTIVE_EDITOR: {
+      let editor;
       const newEditors = state.editors.map((e) => {
         if (e.id !== state.activeEditorId) {
           return e;
         }
 
         e.title = action.payload;
+        editor = e;
         return e;
       });
       return {
         ...state,
         editors: newEditors,
+        activeEditor: editor,
       };
     }
     default:
@@ -94,9 +102,14 @@ export const getEditors = createSelector(
     (state: NewProjectState) => state.editors
 );
 
-export const getActiveEditor = createSelector(
+export const getActiveEditorId = createSelector(
   getNewProjectState,
   (state: NewProjectState) => state.activeEditorId
+);
+
+export const getActiveEditor = createSelector(
+  getNewProjectState,
+  (state: NewProjectState) => state.activeEditor
 );
 
 export const getNumberOfOpenedEditors = createSelector(

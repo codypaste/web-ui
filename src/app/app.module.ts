@@ -14,6 +14,8 @@ import { FooterComponent } from './footer/footer.component';
 import { EditorComponent } from './new-project-page/editor/editor.component';
 import { ProjectMenuComponent } from './new-project-page/project-menu/project-menu.component';
 import { EditorDirective } from './new-project-page/editor.directive';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { EditorDirective } from './new-project-page/editor.directive';
     StoreModule.forRoot(reducers, {metaReducers}),
     NgbModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

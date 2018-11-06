@@ -20,7 +20,8 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.json"
             ],
             "styles": [
               "src/styles.css",
@@ -32,7 +33,7 @@
               "node_modules/semantic-ui/dist/semantic.js",
               "node_modules/codemirror/lib/codemirror.js",
               {
-                "input":"node_modules/codemirror/mode/javascript/javascript.js",
+                "input": "node_modules/codemirror/mode/javascript/javascript.js",
                 "lazy": true,
                 "bundleName": "lazy-loaded-script"
               }
@@ -61,7 +62,8 @@
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
                 }
-              ]
+              ],
+              "serviceWorker": true
             }
           }
         },
@@ -95,7 +97,8 @@
             "scripts": [],
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.json"
             ]
           }
         },

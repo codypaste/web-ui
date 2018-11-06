@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, ValidationErrors } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-project-menu',
   templateUrl: './project-menu.component.html',
   styleUrls: ['./project-menu.component.css']
 })
-export class ProjectMenuComponent implements OnInit {
+export class ProjectMenuComponent implements OnInit, OnDestroy {
 
   isPrivate = false;
   errors: ValidationErrors;
+  visibilitySub: Subscription;
 
   projectMenuForm = new FormGroup({
     title: new FormControl(''),
@@ -22,11 +24,7 @@ export class ProjectMenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.onChanges();
-  }
-
-  onChanges(): void {
-    this.projectMenuForm.get('visibility').valueChanges.subscribe(val => {
+    this.visibilitySub = this.projectMenuForm.get('visibility').valueChanges.subscribe(val => {
       if (val === 'private') {
         this.isPrivate = true;
         this.projectMenuForm.get('password').setValidators([Validators.required]);
@@ -39,6 +37,10 @@ export class ProjectMenuComponent implements OnInit {
       this.projectMenuForm.get('password').setValue('');
       this.projectMenuForm.get('password').updateValueAndValidity();
     });
+  }
+
+  ngOnDestroy() {
+    this.visibilitySub.unsubscribe();
   }
 
   onSubmit() {

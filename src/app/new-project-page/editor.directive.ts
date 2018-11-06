@@ -1,6 +1,6 @@
-import { Directive, ElementRef } from '@angular/core';
+import { Directive, ElementRef, OnDestroy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { NewProjectState, getEditors, getActiveEditor } from '../_store/newProjectStore';
 import * as fromAction from '../_store/actions';
 import { EditorModel } from '../_models/EditorModel';
@@ -20,10 +20,13 @@ const loadScipt = async () => {
 @Directive({
   selector: '[appEditor]'
 })
-export class EditorDirective {
+export class EditorDirective implements OnDestroy {
   editor: any;
   editors$: Observable<EditorModel[]>;
   activeEditor$: Observable<EditorModel>;
+
+  editorContent: Subscription;
+
   constructor(el: ElementRef,
     private store: Store<NewProjectState>) {
     this.editor = new CodeMirror.fromTextArea(el.nativeElement, {
@@ -35,7 +38,7 @@ export class EditorDirective {
     this.editors$ = store.pipe(select(getEditors));
     this.activeEditor$ = store.pipe(select(getActiveEditor));
 
-    this.activeEditor$.subscribe(editor => {
+    this.editorContent = this.activeEditor$.subscribe(editor => {
       this.editor.setValue(editor.content || '');
     });
 
@@ -51,6 +54,10 @@ export class EditorDirective {
       await loadScipt();
       this.editor.setOption('mode', 'javascript');
     }, 3000);
+  }
+
+  ngOnDestroy() {
+    this.editorContent.unsubscribe();
   }
 
 }

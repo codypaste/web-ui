@@ -45,3 +45,7 @@
   padding-right: 1rem;
   margin-bottom: 1rem;
 }
+
+.ui.menu .item > .label {
+  background: #ddd;
+};

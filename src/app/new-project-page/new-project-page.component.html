@@ -8,10 +8,11 @@
   <div class="Tabs">
     <div class="ui secondary pointing menu">
       <a class="item" *ngFor="let editor of editors$ | async; index as i" (click)="switchActiveEditor(i)" [ngClass]="{
-                    'active': editor.id === (activeEditor$ | async).id
-                  }">
-        {{editor.title || 'unnamed'}}
+          'active': editor.id === (activeEditor$ | async).id
+        }">
+        {{editor.title || 'unnamed'}} <div (click)="onCloseEditor(i)" *ngIf="editor.id === (activeEditor$ | async).id && (numberOfOpenedEditors$ | async) > 1" class="ui label">X</div>
       </a>
+
       <a class="item" (click)="onAddEditor()">
         <fa-icon icon="plus"></fa-icon>
       </a>
@@ -20,7 +21,7 @@
   <div class="EditorMenu">
     <div class="ui form">
       <div class="fields">
-        <div class="two field">
+        <div class="field">
           <input [(ngModel)]="fileName" (change)="onFilenameChange()" type="text" placeholder="unnamed">
         </div>
       </div>

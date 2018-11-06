@@ -5,6 +5,7 @@ export const CLOSE_EDITOR = 'CLOSE_EDITOR';
 export const SWITCH_ACTIVE_EDITOR = 'SWITCH_ACTIVE_EDITOR';
 export const SET_CONTENT_FOR_ACTIVE_EDITOR = 'SET_CONTENT_FOR_ACTIVE_EDITOR';
 export const SET_TITLE_FOR_ACTIVE_EDITOR = 'SET_TITLE_FOR_ACTIVE_EDITOR';
+export const SET_SYNTAX_FOR_ACTIVE_EDITOR = 'SET_SYNTAX_FOR_ACTIVE_EDITOR';
 
 export class AddEditorAction implements Action {
   readonly type = ADD_EDITOR;
@@ -34,9 +35,16 @@ export class SetTitleForActiveEditorAction implements Action {
   constructor(public payload: string) {}
 }
 
+export class SetSyntaxForActiveEditorAction implements Action {
+  readonly type = SET_SYNTAX_FOR_ACTIVE_EDITOR;
+
+  constructor(public payload: string) {}
+}
+
 export type ALL_ACTIONS =
   AddEditorAction |
   SwitchEditorAction |
   CloseEditorAction |
   SetContentForActiveEditorAction |
-  SetTitleForActiveEditorAction;
+  SetTitleForActiveEditorAction |
+  SetSyntaxForActiveEditorAction;

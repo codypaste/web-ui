@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { reducers, metaReducers } from './_store/reducers';
@@ -16,6 +15,7 @@ import { ProjectMenuComponent } from './new-project-page/project-menu/project-me
 import { EditorDirective } from './new-project-page/editor.directive';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { SelectDirective } from './select.directive';
 
 @NgModule({
   declarations: [
@@ -25,13 +25,13 @@ import { environment } from '../environments/environment';
     FooterComponent,
     EditorComponent,
     ProjectMenuComponent,
-    EditorDirective
+    EditorDirective,
+    SelectDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers, {metaReducers}),
-    NgbModule,
     ReactiveFormsModule,
     FormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })

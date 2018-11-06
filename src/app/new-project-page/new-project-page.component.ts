@@ -5,6 +5,7 @@ import { NewProjectState, getEditors, getActiveEditor, getNumberOfOpenedEditors}
 import * as fromActions from '../_store/actions';
 import { EditorModel } from '../_models/EditorModel';
 
+declare var CodeMirror: any;
 @Component({
   selector: 'app-new-project-page',
   templateUrl: './new-project-page.component.html',
@@ -17,6 +18,7 @@ export class NewProjectPageComponent implements OnInit, OnDestroy {
   numberOfOpenedEditors$: Observable<Number>;
   fileName: string;
   filenameSub: Subscription;
+  modes: any[];
 
   constructor(
     private store: Store<NewProjectState>
@@ -28,6 +30,8 @@ export class NewProjectPageComponent implements OnInit, OnDestroy {
     this.filenameSub = this.activeEditor$.subscribe(editor => {
       this.fileName = editor.title;
     });
+
+    this.modes = CodeMirror.modeInfo;
   }
 
   ngOnInit() {
@@ -55,5 +59,4 @@ export class NewProjectPageComponent implements OnInit, OnDestroy {
   onFilenameChange() {
     this.store.dispatch(new fromActions.SetTitleForActiveEditorAction(this.fileName));
   }
-
 }

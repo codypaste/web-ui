@@ -8,15 +8,6 @@ import { EditorModel } from '../_models/EditorModel';
 
 declare var CodeMirror: any;
 
-const loadScipt = async () => {
-  return new Promise(resolve => {
-    const scriptElement = document.createElement('script');
-    scriptElement.src = 'lazy-loaded-script.js';
-    scriptElement.onload = resolve;
-    document.body.appendChild(scriptElement);
-  });
-};
-
 @Directive({
   selector: '[appEditor]'
 })
@@ -31,8 +22,7 @@ export class EditorDirective implements OnDestroy {
     private store: Store<NewProjectState>) {
     this.editor = new CodeMirror.fromTextArea(el.nativeElement, {
       lineNumbers: true,
-      mode: 'javascript',
-      viewportMargin: 20,
+      mode: 'plaintext'
     });
 
     this.editors$ = store.pipe(select(getEditors));
@@ -40,6 +30,15 @@ export class EditorDirective implements OnDestroy {
 
     this.editorContent = this.activeEditor$.subscribe(editor => {
       this.editor.setValue(editor.content || '');
+      const currentMode = this.editor.getOption('mode');
+      let newMode = editor.syntax;
+      if (!newMode) {
+        newMode = 'plaintext';
+      }
+      console.log(currentMode, newMode);
+      if (newMode && newMode !== currentMode) {
+        this.editor.setOption('mode', newMode);
+      }
     });
 
     this.editor.on('blur', () => {
@@ -49,11 +48,6 @@ export class EditorDirective implements OnDestroy {
     setTimeout(() => {
       this.editor.refresh();
     }, 0);
-
-    setTimeout(async () => {
-      await loadScipt();
-      this.editor.setOption('mode', 'javascript');
-    }, 3000);
   }
 
   ngOnDestroy() {

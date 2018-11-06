@@ -90,6 +90,24 @@ export function reducer(state = initialState, action: fromActions.ALL_ACTIONS): 
         activeEditor: editor,
       };
     }
+
+    case fromActions.SET_SYNTAX_FOR_ACTIVE_EDITOR: {
+      let editor;
+      const newEditors = state.editors.map((e) => {
+        if (e.id !== state.activeEditorId) {
+          return e;
+        }
+
+        e.syntax = action.payload;
+        editor = e;
+        return e;
+      });
+      return {
+        ...state,
+        editors: newEditors,
+        activeEditor: {...editor},
+      };
+    }
     default:
       return state;
   }

@@ -10,7 +10,8 @@
       <a class="item" *ngFor="let editor of editors$ | async; index as i" (click)="switchActiveEditor(i)" [ngClass]="{
           'active': editor.id === (activeEditor$ | async).id
         }">
-        {{editor.title || 'unnamed'}} <div (click)="onCloseEditor(i)" *ngIf="editor.id === (activeEditor$ | async).id && (numberOfOpenedEditors$ | async) > 1" class="ui label">X</div>
+        {{editor.title || 'unnamed'}} <div (click)="onCloseEditor(i)" *ngIf="editor.id === (activeEditor$ | async).id && (numberOfOpenedEditors$ | async) > 1"
+          class="ui label">X</div>
       </a>
 
       <a class="item" (click)="onAddEditor()">
@@ -24,6 +25,18 @@
         <div class="field">
           <input [(ngModel)]="fileName" (change)="onFilenameChange()" type="text" placeholder="unnamed">
         </div>
+
+        <div appSelect class="field">
+          <div class="ui fluid search selection dropdown">
+            <input type="hidden" name="syntax">
+            <i class="dropdown icon"></i>
+            <div class="default text">Select syntax</div>
+            <div class="menu">
+              <div *ngFor="let mode of modes" class="item" attr.data-value="{{mode.mode}}">{{mode.name}}</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

@@ -32,21 +32,780 @@
               "node_modules/jquery/dist/jquery.js",
               "node_modules/semantic-ui/dist/semantic.js",
               "node_modules/codemirror/lib/codemirror.js",
+              "node_modules/codemirror/mode/meta.js",
+              {
+                "input": "node_modules/codemirror/mode/apl/apl.js",
+                "lazy": true,
+                "bundleName": "cm-apl"
+              },
+              {
+                "input": "node_modules/codemirror/mode/asciiarmor/asciiarmor.js",
+                "lazy": true,
+                "bundleName": "cm-asciiarmor"
+              },
+              {
+                "input": "node_modules/codemirror/mode/asn.1/asn.1.js",
+                "lazy": true,
+                "bundleName": "cm-asn.1"
+              },
+              {
+                "input": "node_modules/codemirror/mode/asterisk/asterisk.js",
+                "lazy": true,
+                "bundleName": "cm-asterisk"
+              },
+              {
+                "input": "node_modules/codemirror/mode/brainfuck/brainfuck.js",
+                "lazy": true,
+                "bundleName": "cm-brainfuck"
+              },
+              {
+                "input": "node_modules/codemirror/mode/clike/clike.js",
+                "lazy": true,
+                "bundleName": "cm-clike"
+              },
+              {
+                "input": "node_modules/codemirror/mode/clike/clike.js",
+                "lazy": true,
+                "bundleName": "cm-clike"
+              },
+              {
+                "input": "node_modules/codemirror/mode/cobol/cobol.js",
+                "lazy": true,
+                "bundleName": "cm-cobol"
+              },
+              {
+                "input": "node_modules/codemirror/mode/clike/clike.js",
+                "lazy": true,
+                "bundleName": "cm-clike"
+              },
+              {
+                "input": "node_modules/codemirror/mode/clojure/clojure.js",
+                "lazy": true,
+                "bundleName": "cm-clojure"
+              },
+              {
+                "input": "node_modules/codemirror/mode/clojure/clojure.js",
+                "lazy": true,
+                "bundleName": "cm-clojure"
+              },
+              {
+                "input": "node_modules/codemirror/mode/css/css.js",
+                "lazy": true,
+                "bundleName": "cm-css"
+              },
+              {
+                "input": "node_modules/codemirror/mode/cmake/cmake.js",
+                "lazy": true,
+                "bundleName": "cm-cmake"
+              },
+              {
+                "input": "node_modules/codemirror/mode/coffeescript/coffeescript.js",
+                "lazy": true,
+                "bundleName": "cm-coffeescript"
+              },
+              {
+                "input": "node_modules/codemirror/mode/commonlisp/commonlisp.js",
+                "lazy": true,
+                "bundleName": "cm-commonlisp"
+              },
+              {
+                "input": "node_modules/codemirror/mode/cypher/cypher.js",
+                "lazy": true,
+                "bundleName": "cm-cypher"
+              },
+              {
+                "input": "node_modules/codemirror/mode/python/python.js",
+                "lazy": true,
+                "bundleName": "cm-python"
+              },
+              {
+                "input": "node_modules/codemirror/mode/crystal/crystal.js",
+                "lazy": true,
+                "bundleName": "cm-crystal"
+              },
+              {
+                "input": "node_modules/codemirror/mode/css/css.js",
+                "lazy": true,
+                "bundleName": "cm-css"
+              },
+              {
+                "input": "node_modules/codemirror/mode/sql/sql.js",
+                "lazy": true,
+                "bundleName": "cm-sql"
+              },
+              {
+                "input": "node_modules/codemirror/mode/d/d.js",
+                "lazy": true,
+                "bundleName": "cm-d"
+              },
+              {
+                "input": "node_modules/codemirror/mode/dart/dart.js",
+                "lazy": true,
+                "bundleName": "cm-dart"
+              },
+              {
+                "input": "node_modules/codemirror/mode/diff/diff.js",
+                "lazy": true,
+                "bundleName": "cm-diff"
+              },
+              {
+                "input": "node_modules/codemirror/mode/django/django.js",
+                "lazy": true,
+                "bundleName": "cm-django"
+              },
+              {
+                "input": "node_modules/codemirror/mode/dockerfile/dockerfile.js",
+                "lazy": true,
+                "bundleName": "cm-dockerfile"
+              },
+              {
+                "input": "node_modules/codemirror/mode/dtd/dtd.js",
+                "lazy": true,
+                "bundleName": "cm-dtd"
+              },
+              {
+                "input": "node_modules/codemirror/mode/dylan/dylan.js",
+                "lazy": true,
+                "bundleName": "cm-dylan"
+              },
+              {
+                "input": "node_modules/codemirror/mode/ebnf/ebnf.js",
+                "lazy": true,
+                "bundleName": "cm-ebnf"
+              },
+              {
+                "input": "node_modules/codemirror/mode/ecl/ecl.js",
+                "lazy": true,
+                "bundleName": "cm-ecl"
+              },
+              {
+                "input": "node_modules/codemirror/mode/clojure/clojure.js",
+                "lazy": true,
+                "bundleName": "cm-clojure"
+              },
+              {
+                "input": "node_modules/codemirror/mode/eiffel/eiffel.js",
+                "lazy": true,
+                "bundleName": "cm-eiffel"
+              },
+              {
+                "input": "node_modules/codemirror/mode/elm/elm.js",
+                "lazy": true,
+                "bundleName": "cm-elm"
+              },
+              {
+                "input": "node_modules/codemirror/mode/htmlembedded/htmlembedded.js",
+                "lazy": true,
+                "bundleName": "cm-htmlembedded"
+              },
+              {
+                "input": "node_modules/codemirror/mode/htmlembedded/htmlembedded.js",
+                "lazy": true,
+                "bundleName": "cm-htmlembedded"
+              },
+              {
+                "input": "node_modules/codemirror/mode/erlang/erlang.js",
+                "lazy": true,
+                "bundleName": "cm-erlang"
+              },
+              {
+                "input": "node_modules/codemirror/mode/sql/sql.js",
+                "lazy": true,
+                "bundleName": "cm-sql"
+              },
+              {
+                "input": "node_modules/codemirror/mode/factor/factor.js",
+                "lazy": true,
+                "bundleName": "cm-factor"
+              },
+              {
+                "input": "node_modules/codemirror/mode/fcl/fcl.js",
+                "lazy": true,
+                "bundleName": "cm-fcl"
+              },
+              {
+                "input": "node_modules/codemirror/mode/forth/forth.js",
+                "lazy": true,
+                "bundleName": "cm-forth"
+              },
+              {
+                "input": "node_modules/codemirror/mode/fortran/fortran.js",
+                "lazy": true,
+                "bundleName": "cm-fortran"
+              },
+              {
+                "input": "node_modules/codemirror/mode/mllike/mllike.js",
+                "lazy": true,
+                "bundleName": "cm-mllike"
+              },
+              {
+                "input": "node_modules/codemirror/mode/gas/gas.js",
+                "lazy": true,
+                "bundleName": "cm-gas"
+              },
+              {
+                "input": "node_modules/codemirror/mode/gherkin/gherkin.js",
+                "lazy": true,
+                "bundleName": "cm-gherkin"
+              },
+              {
+                "input": "node_modules/codemirror/mode/gfm/gfm.js",
+                "lazy": true,
+                "bundleName": "cm-gfm"
+              },
+              {
+                "input": "node_modules/codemirror/mode/go/go.js",
+                "lazy": true,
+                "bundleName": "cm-go"
+              },
+              {
+                "input": "node_modules/codemirror/mode/groovy/groovy.js",
+                "lazy": true,
+                "bundleName": "cm-groovy"
+              },
+              {
+                "input": "node_modules/codemirror/mode/haml/haml.js",
+                "lazy": true,
+                "bundleName": "cm-haml"
+              },
+              {
+                "input": "node_modules/codemirror/mode/haskell/haskell.js",
+                "lazy": true,
+                "bundleName": "cm-haskell"
+              },
+              {
+                "input": "node_modules/codemirror/mode/haskell-literate/haskell-literate.js",
+                "lazy": true,
+                "bundleName": "cm-haskell-literate"
+              },
+              {
+                "input": "node_modules/codemirror/mode/haxe/haxe.js",
+                "lazy": true,
+                "bundleName": "cm-haxe"
+              },
+              {
+                "input": "node_modules/codemirror/mode/haxe/haxe.js",
+                "lazy": true,
+                "bundleName": "cm-haxe"
+              },
+              {
+                "input": "node_modules/codemirror/mode/htmlembedded/htmlembedded.js",
+                "lazy": true,
+                "bundleName": "cm-htmlembedded"
+              },
+              {
+                "input": "node_modules/codemirror/mode/htmlmixed/htmlmixed.js",
+                "lazy": true,
+                "bundleName": "cm-htmlmixed"
+              },
+              {
+                "input": "node_modules/codemirror/mode/http/http.js",
+                "lazy": true,
+                "bundleName": "cm-http"
+              },
+              {
+                "input": "node_modules/codemirror/mode/idl/idl.js",
+                "lazy": true,
+                "bundleName": "cm-idl"
+              },
+              {
+                "input": "node_modules/codemirror/mode/pug/pug.js",
+                "lazy": true,
+                "bundleName": "cm-pug"
+              },
+              {
+                "input": "node_modules/codemirror/mode/clike/clike.js",
+                "lazy": true,
+                "bundleName": "cm-clike"
+              },
+              {
+                "input": "node_modules/codemirror/mode/htmlembedded/htmlembedded.js",
+                "lazy": true,
+                "bundleName": "cm-htmlembedded"
+              },
               {
                 "input": "node_modules/codemirror/mode/javascript/javascript.js",
                 "lazy": true,
-                "bundleName": "lazy-loaded-script"
+                "bundleName": "cm-javascript"
+              },
+              {
+                "input": "node_modules/codemirror/mode/javascript/javascript.js",
+                "lazy": true,
+                "bundleName": "cm-javascript"
+              },
+              {
+                "input": "node_modules/codemirror/mode/javascript/javascript.js",
+                "lazy": true,
+                "bundleName": "cm-javascript"
+              },
+              {
+                "input": "node_modules/codemirror/mode/jsx/jsx.js",
+                "lazy": true,
+                "bundleName": "cm-jsx"
+              },
+              {
+                "input": "node_modules/codemirror/mode/jinja2/jinja2.js",
+                "lazy": true,
+                "bundleName": "cm-jinja2"
+              },
+              {
+                "input": "node_modules/codemirror/mode/julia/julia.js",
+                "lazy": true,
+                "bundleName": "cm-julia"
+              },
+              {
+                "input": "node_modules/codemirror/mode/clike/clike.js",
+                "lazy": true,
+                "bundleName": "cm-clike"
+              },
+              {
+                "input": "node_modules/codemirror/mode/css/css.js",
+                "lazy": true,
+                "bundleName": "cm-css"
+              },
+              {
+                "input": "node_modules/codemirror/mode/livescript/livescript.js",
+                "lazy": true,
+                "bundleName": "cm-livescript"
+              },
+              {
+                "input": "node_modules/codemirror/mode/lua/lua.js",
+                "lazy": true,
+                "bundleName": "cm-lua"
+              },
+              {
+                "input": "node_modules/codemirror/mode/markdown/markdown.js",
+                "lazy": true,
+                "bundleName": "cm-markdown"
+              },
+              {
+                "input": "node_modules/codemirror/mode/mirc/mirc.js",
+                "lazy": true,
+                "bundleName": "cm-mirc"
+              },
+              {
+                "input": "node_modules/codemirror/mode/sql/sql.js",
+                "lazy": true,
+                "bundleName": "cm-sql"
+              },
+              {
+                "input": "node_modules/codemirror/mode/mathematica/mathematica.js",
+                "lazy": true,
+                "bundleName": "cm-mathematica"
+              },
+              {
+                "input": "node_modules/codemirror/mode/modelica/modelica.js",
+                "lazy": true,
+                "bundleName": "cm-modelica"
+              },
+              {
+                "input": "node_modules/codemirror/mode/mumps/mumps.js",
+                "lazy": true,
+                "bundleName": "cm-mumps"
+              },
+              {
+                "input": "node_modules/codemirror/mode/sql/sql.js",
+                "lazy": true,
+                "bundleName": "cm-sql"
+              },
+              {
+                "input": "node_modules/codemirror/mode/mbox/mbox.js",
+                "lazy": true,
+                "bundleName": "cm-mbox"
+              },
+              {
+                "input": "node_modules/codemirror/mode/sql/sql.js",
+                "lazy": true,
+                "bundleName": "cm-sql"
+              },
+              {
+                "input": "node_modules/codemirror/mode/nginx/nginx.js",
+                "lazy": true,
+                "bundleName": "cm-nginx"
+              },
+              {
+                "input": "node_modules/codemirror/mode/nsis/nsis.js",
+                "lazy": true,
+                "bundleName": "cm-nsis"
+              },
+              {
+                "input": "node_modules/codemirror/mode/ntriples/ntriples.js",
+                "lazy": true,
+                "bundleName": "cm-ntriples"
+              },
+              {
+                "input": "node_modules/codemirror/mode/clike/clike.js",
+                "lazy": true,
+                "bundleName": "cm-clike"
+              },
+              {
+                "input": "node_modules/codemirror/mode/mllike/mllike.js",
+                "lazy": true,
+                "bundleName": "cm-mllike"
+              },
+              {
+                "input": "node_modules/codemirror/mode/octave/octave.js",
+                "lazy": true,
+                "bundleName": "cm-octave"
+              },
+              {
+                "input": "node_modules/codemirror/mode/oz/oz.js",
+                "lazy": true,
+                "bundleName": "cm-oz"
+              },
+              {
+                "input": "node_modules/codemirror/mode/pascal/pascal.js",
+                "lazy": true,
+                "bundleName": "cm-pascal"
+              },
+              {
+                "input": "node_modules/codemirror/mode/pegjs/pegjs.js",
+                "lazy": true,
+                "bundleName": "cm-pegjs"
+              },
+              {
+                "input": "node_modules/codemirror/mode/perl/perl.js",
+                "lazy": true,
+                "bundleName": "cm-perl"
+              },
+              {
+                "input": "node_modules/codemirror/mode/php/php.js",
+                "lazy": true,
+                "bundleName": "cm-php"
+              },
+              {
+                "input": "node_modules/codemirror/mode/pig/pig.js",
+                "lazy": true,
+                "bundleName": "cm-pig"
+              },
+              {
+                "input": "node_modules/codemirror/mode/sql/sql.js",
+                "lazy": true,
+                "bundleName": "cm-sql"
+              },
+              {
+                "input": "node_modules/codemirror/mode/powershell/powershell.js",
+                "lazy": true,
+                "bundleName": "cm-powershell"
+              },
+              {
+                "input": "node_modules/codemirror/mode/properties/properties.js",
+                "lazy": true,
+                "bundleName": "cm-properties"
+              },
+              {
+                "input": "node_modules/codemirror/mode/protobuf/protobuf.js",
+                "lazy": true,
+                "bundleName": "cm-protobuf"
+              },
+              {
+                "input": "node_modules/codemirror/mode/python/python.js",
+                "lazy": true,
+                "bundleName": "cm-python"
+              },
+              {
+                "input": "node_modules/codemirror/mode/puppet/puppet.js",
+                "lazy": true,
+                "bundleName": "cm-puppet"
+              },
+              {
+                "input": "node_modules/codemirror/mode/q/q.js",
+                "lazy": true,
+                "bundleName": "cm-q"
+              },
+              {
+                "input": "node_modules/codemirror/mode/r/r.js",
+                "lazy": true,
+                "bundleName": "cm-r"
+              },
+              {
+                "input": "node_modules/codemirror/mode/rst/rst.js",
+                "lazy": true,
+                "bundleName": "cm-rst"
+              },
+              {
+                "input": "node_modules/codemirror/mode/rpm/rpm.js",
+                "lazy": true,
+                "bundleName": "cm-rpm"
+              },
+              {
+                "input": "node_modules/codemirror/mode/rpm/rpm.js",
+                "lazy": true,
+                "bundleName": "cm-rpm"
+              },
+              {
+                "input": "node_modules/codemirror/mode/ruby/ruby.js",
+                "lazy": true,
+                "bundleName": "cm-ruby"
+              },
+              {
+                "input": "node_modules/codemirror/mode/rust/rust.js",
+                "lazy": true,
+                "bundleName": "cm-rust"
+              },
+              {
+                "input": "node_modules/codemirror/mode/sas/sas.js",
+                "lazy": true,
+                "bundleName": "cm-sas"
+              },
+              {
+                "input": "node_modules/codemirror/mode/sass/sass.js",
+                "lazy": true,
+                "bundleName": "cm-sass"
+              },
+              {
+                "input": "node_modules/codemirror/mode/clike/clike.js",
+                "lazy": true,
+                "bundleName": "cm-clike"
+              },
+              {
+                "input": "node_modules/codemirror/mode/scheme/scheme.js",
+                "lazy": true,
+                "bundleName": "cm-scheme"
+              },
+              {
+                "input": "node_modules/codemirror/mode/css/css.js",
+                "lazy": true,
+                "bundleName": "cm-css"
+              },
+              {
+                "input": "node_modules/codemirror/mode/shell/shell.js",
+                "lazy": true,
+                "bundleName": "cm-shell"
+              },
+              {
+                "input": "node_modules/codemirror/mode/sieve/sieve.js",
+                "lazy": true,
+                "bundleName": "cm-sieve"
+              },
+              {
+                "input": "node_modules/codemirror/mode/slim/slim.js",
+                "lazy": true,
+                "bundleName": "cm-slim"
+              },
+              {
+                "input": "node_modules/codemirror/mode/smalltalk/smalltalk.js",
+                "lazy": true,
+                "bundleName": "cm-smalltalk"
+              },
+              {
+                "input": "node_modules/codemirror/mode/smarty/smarty.js",
+                "lazy": true,
+                "bundleName": "cm-smarty"
+              },
+              {
+                "input": "node_modules/codemirror/mode/solr/solr.js",
+                "lazy": true,
+                "bundleName": "cm-solr"
+              },
+              {
+                "input": "node_modules/codemirror/mode/mllike/mllike.js",
+                "lazy": true,
+                "bundleName": "cm-mllike"
+              },
+              {
+                "input": "node_modules/codemirror/mode/soy/soy.js",
+                "lazy": true,
+                "bundleName": "cm-soy"
+              },
+              {
+                "input": "node_modules/codemirror/mode/sparql/sparql.js",
+                "lazy": true,
+                "bundleName": "cm-sparql"
+              },
+              {
+                "input": "node_modules/codemirror/mode/spreadsheet/spreadsheet.js",
+                "lazy": true,
+                "bundleName": "cm-spreadsheet"
+              },
+              {
+                "input": "node_modules/codemirror/mode/sql/sql.js",
+                "lazy": true,
+                "bundleName": "cm-sql"
+              },
+              {
+                "input": "node_modules/codemirror/mode/sql/sql.js",
+                "lazy": true,
+                "bundleName": "cm-sql"
+              },
+              {
+                "input": "node_modules/codemirror/mode/clike/clike.js",
+                "lazy": true,
+                "bundleName": "cm-clike"
+              },
+              {
+                "input": "node_modules/codemirror/mode/stylus/stylus.js",
+                "lazy": true,
+                "bundleName": "cm-stylus"
+              },
+              {
+                "input": "node_modules/codemirror/mode/swift/swift.js",
+                "lazy": true,
+                "bundleName": "cm-swift"
+              },
+              {
+                "input": "node_modules/codemirror/mode/stex/stex.js",
+                "lazy": true,
+                "bundleName": "cm-stex"
+              },
+              {
+                "input": "node_modules/codemirror/mode/stex/stex.js",
+                "lazy": true,
+                "bundleName": "cm-stex"
+              },
+              {
+                "input": "node_modules/codemirror/mode/verilog/verilog.js",
+                "lazy": true,
+                "bundleName": "cm-verilog"
+              },
+              {
+                "input": "node_modules/codemirror/mode/tcl/tcl.js",
+                "lazy": true,
+                "bundleName": "cm-tcl"
+              },
+              {
+                "input": "node_modules/codemirror/mode/textile/textile.js",
+                "lazy": true,
+                "bundleName": "cm-textile"
+              },
+              {
+                "input": "node_modules/codemirror/mode/tiddlywiki/tiddlywiki.js",
+                "lazy": true,
+                "bundleName": "cm-tiddlywiki"
+              },
+              {
+                "input": "node_modules/codemirror/mode/tiki/tiki.js",
+                "lazy": true,
+                "bundleName": "cm-tiki"
+              },
+              {
+                "input": "node_modules/codemirror/mode/toml/toml.js",
+                "lazy": true,
+                "bundleName": "cm-toml"
+              },
+              {
+                "input": "node_modules/codemirror/mode/tornado/tornado.js",
+                "lazy": true,
+                "bundleName": "cm-tornado"
+              },
+              {
+                "input": "node_modules/codemirror/mode/troff/troff.js",
+                "lazy": true,
+                "bundleName": "cm-troff"
+              },
+              {
+                "input": "node_modules/codemirror/mode/ttcn/ttcn.js",
+                "lazy": true,
+                "bundleName": "cm-ttcn"
+              },
+              {
+                "input": "node_modules/codemirror/mode/ttcn-cfg/ttcn-cfg.js",
+                "lazy": true,
+                "bundleName": "cm-ttcn-cfg"
+              },
+              {
+                "input": "node_modules/codemirror/mode/turtle/turtle.js",
+                "lazy": true,
+                "bundleName": "cm-turtle"
+              },
+              {
+                "input": "node_modules/codemirror/mode/javascript/javascript.js",
+                "lazy": true,
+                "bundleName": "cm-javascript"
+              },
+              {
+                "input": "node_modules/codemirror/mode/jsx/jsx.js",
+                "lazy": true,
+                "bundleName": "cm-jsx"
+              },
+              {
+                "input": "node_modules/codemirror/mode/twig/twig.js",
+                "lazy": true,
+                "bundleName": "cm-twig"
+              },
+              {
+                "input": "node_modules/codemirror/mode/webidl/webidl.js",
+                "lazy": true,
+                "bundleName": "cm-webidl"
+              },
+              {
+                "input": "node_modules/codemirror/mode/vb/vb.js",
+                "lazy": true,
+                "bundleName": "cm-vb"
+              },
+              {
+                "input": "node_modules/codemirror/mode/vbscript/vbscript.js",
+                "lazy": true,
+                "bundleName": "cm-vbscript"
+              },
+              {
+                "input": "node_modules/codemirror/mode/velocity/velocity.js",
+                "lazy": true,
+                "bundleName": "cm-velocity"
+              },
+              {
+                "input": "node_modules/codemirror/mode/verilog/verilog.js",
+                "lazy": true,
+                "bundleName": "cm-verilog"
+              },
+              {
+                "input": "node_modules/codemirror/mode/vhdl/vhdl.js",
+                "lazy": true,
+                "bundleName": "cm-vhdl"
+              },
+              {
+                "input": "node_modules/codemirror/mode/vue/vue.js",
+                "lazy": true,
+                "bundleName": "cm-vue"
+              },
+              {
+                "input": "node_modules/codemirror/mode/xml/xml.js",
+                "lazy": true,
+                "bundleName": "cm-xml"
+              },
+              {
+                "input": "node_modules/codemirror/mode/xquery/xquery.js",
+                "lazy": true,
+                "bundleName": "cm-xquery"
+              },
+              {
+                "input": "node_modules/codemirror/mode/yacas/yacas.js",
+                "lazy": true,
+                "bundleName": "cm-yacas"
+              },
+              {
+                "input": "node_modules/codemirror/mode/yaml/yaml.js",
+                "lazy": true,
+                "bundleName": "cm-yaml"
+              },
+              {
+                "input": "node_modules/codemirror/mode/z80/z80.js",
+                "lazy": true,
+                "bundleName": "cm-z80"
+              },
+              {
+                "input": "node_modules/codemirror/mode/mscgen/mscgen.js",
+                "lazy": true,
+                "bundleName": "cm-mscgen"
+              },
+              {
+                "input": "node_modules/codemirror/mode/mscgen/mscgen.js",
+                "lazy": true,
+                "bundleName": "cm-mscgen"
+              },
+              {
+                "input": "node_modules/codemirror/mode/mscgen/mscgen.js",
+                "lazy": true,
+                "bundleName": "cm-mscgen"
               }
             ]
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.prod.ts"
+              }],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -56,13 +815,11 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                }
-              ],
+              "budgets": [{
+                "type": "initial",
+                "maximumWarning": "2mb",
+                "maximumError": "5mb"
+              }],
               "serviceWorker": true
             }
           }

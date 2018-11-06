@@ -3,12 +3,7 @@ html, body {
   margin: 0 auto;
 }
 
-* {
-  border-radius: 0 !important;
-}
-
-
 .CodeMirror {
   border: 1px solid #eee;
-  height: 90% !important;
+  height: 100% !important;
 }

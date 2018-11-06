@@ -2,13 +2,17 @@
   display: grid;
   height: 100%;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: max-content 1fr 1fr 1fr 1fr 1fr max-content;
-  grid-gap: 0;
-  grid-template-areas: "Header Header Header Header Header Header Header""Menu Editor Editor Editor Editor Editor Editor""Menu Editor Editor Editor Editor Editor Editor""Menu Editor Editor Editor Editor Editor Editor""Menu Editor Editor Editor Editor Editor Editor""Menu Editor Editor Editor Editor Editor Editor""Footer Footer Footer Footer Footer Footer Footer";
+  grid-template-rows: max-content max-content 1fr 1fr max-content max-content;
+  grid-gap: 0px 0px;
+  grid-template-areas: "Menu Tabs Tabs Tabs Tabs Tabs Tabs""Menu EditorMenu EditorMenu EditorMenu EditorMenu EditorMenu EditorMenu""Menu Editor Editor Editor Editor Editor Editor""Menu Editor Editor Editor Editor Editor Editor""Menu Editor Editor Editor Editor Editor Editor""Footer Footer Footer Footer Footer Footer Footer";
 }
 
-.Header {
-  grid-area: Header;
+.Footer {
+  grid-area: Footer;
+  align-self: end;
+  padding: 1rem;
+  background-color: #303F9F;
+  color: #C5CAE9;
 }
 
 .Menu {
@@ -20,13 +24,24 @@
   border-right: 1px solid #eee;
 }
 
-.Editor {
-  grid-area: Editor;
-  padding: 1rem;
+.Tabs {
+  margin-top: 1rem;
+  grid-area: Tabs;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-.Footer {
-  grid-area: Footer;
-  background-color: #303F9F;
-  color: #C5CAE9;
+.EditorMenu {
+  margin-top: 0.5rem;
+  grid-area: EditorMenu;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+}
+
+.Editor {
+  grid-area: Editor;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 1rem;
 }

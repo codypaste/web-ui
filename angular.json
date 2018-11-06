@@ -24,10 +24,12 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/assets/bootstrap.min.css",
+              "node_modules/semantic-ui/dist/semantic.css",
               "node_modules/codemirror/lib/codemirror.css"
             ],
             "scripts": [
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/semantic-ui/dist/semantic.js",
               "node_modules/codemirror/lib/codemirror.js",
               {
                 "input":"node_modules/codemirror/mode/javascript/javascript.js",

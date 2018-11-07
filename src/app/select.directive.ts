@@ -8,12 +8,12 @@ declare var $: any;
 const alreadyLoaded = [];
 
 const loadScipt = async (scriptName) => {
-  return new Promise(resolve => {
-    const scriptElement = document.createElement('script');
-    scriptElement.src = scriptName;
-    scriptElement.onload = resolve;
-    document.body.appendChild(scriptElement);
-  });
+  // return new Promise(resolve => {
+  //   const scriptElement = document.createElement('script');
+  //   scriptElement.src = scriptName;
+  //   scriptElement.onload = resolve;
+  //   document.body.appendChild(scriptElement);
+  // });
 };
 
 
@@ -28,16 +28,14 @@ export class SelectDirective {
     setTimeout(() => {
       $('.ui.dropdown').dropdown({
         onChange: async (val) => {
-          if (val === 'null') {
-            this.store.dispatch(new fromActions.SetSyntaxForActiveEditorAction(val));
+          const targetScriptName = `cm-${val}.js`;
+
+          if (val === 'null' || alreadyLoaded.includes(targetScriptName)) {
             return;
           }
-          const targetScriptName = `cm-${val}.js`;
-          if (!alreadyLoaded.includes(targetScriptName)) {
-            await loadScipt(targetScriptName);
-            this.store.dispatch(new fromActions.SetSyntaxForActiveEditorAction(val));
-            alreadyLoaded.push(targetScriptName);
-          }
+          await loadScipt(targetScriptName);
+          alreadyLoaded.push(targetScriptName);
+          this.store.dispatch(new fromActions.SetSyntaxForActiveEditorAction(val));
         }
       });
     }, 0);

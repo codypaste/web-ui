@@ -26,7 +26,7 @@
           <input [(ngModel)]="fileName" (change)="onFilenameChange()" type="text" placeholder="unnamed">
         </div>
 
-        <div appSelect class="field">
+        <div appSelect class="field six wide">
           <div class="ui fluid search selection dropdown">
             <input type="hidden" name="syntax">
             <i class="dropdown icon"></i>
@@ -44,36 +44,3 @@
     <app-editor></app-editor>
   </div>
 </div>
-
-<!-- <div class="grid-container">
-  <div class="Menu">
-
-  </div>
-
-  <div class="Editor">
-
-
-
-    <div class="btn-group" role="group">
-      <div *ngFor="let editor of editors$ | async; index as i">
-        <button (click)="switchActiveEditor(i)" type="button" class="btn btn-light" [ngClass]="{
-            'active': editor.id === (activeEditor$ | async).id
-          }">{{editor.title || 'unnamed'}}</button>
-        <button type="button" class="btn btn-light" [ngClass]="{
-            'active': editor.id === (activeEditor$ | async).id
-          }"
-          *ngIf="editor.id === (activeEditor$ | async).id && (numberOfOpenedEditors$ | async) > 1">
-
-        </button>
-      </div>
-      <button (click)="onAddEditor()" type="button" class="btn btn-link">
-        <fa-icon icon="plus"></fa-icon>
-      </button>
-    </div>
-
-
-  </div>
-  <div class="Footer">
-
-  </div>
-</div> -->

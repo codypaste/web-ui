@@ -32,6 +32,15 @@
               "node_modules/jquery/dist/jquery.js",
               "node_modules/semantic-ui/dist/semantic.js",
               "node_modules/codemirror/lib/codemirror.js",
+
+              "node_modules/codemirror/mode/meta.js",
+              "node_modules/codemirror/mode/meta.js",
+              "node_modules/codemirror/mode/meta.js",
+              "node_modules/codemirror/addon/mode/loadmode.js",
+              "node_modules/codemirror/addon/mode/multiplex.js",
+              "node_modules/codemirror/addon/mode/overlay.js",
+              "node_modules/codemirror/addon/mode/simple.js",
+
               "node_modules/codemirror/mode/meta.js",
               {
                 "input": "node_modules/codemirror/mode/apl/apl.js",
@@ -267,6 +276,11 @@
                 "input": "node_modules/codemirror/mode/haml/haml.js",
                 "lazy": true,
                 "bundleName": "cm-haml"
+              },
+              {
+                "input": "node_modules/codemirror/mode/handlebars/handlebars.js",
+                "lazy": true,
+                "bundleName": "cm-handlebars"
               },
               {
                 "input": "node_modules/codemirror/mode/haskell/haskell.js",

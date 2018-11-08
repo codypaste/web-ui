@@ -4,6 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { NewProjectState, getEditors, getActiveEditor, getNumberOfOpenedEditors} from '../_store/newProjectStore';
 import * as fromActions from '../_store/actions';
 import { EditorModel } from '../_models/EditorModel';
+import {environment} from '../../environments/environment';
 
 declare var CodeMirror: any;
 @Component({
@@ -19,6 +20,7 @@ export class NewProjectPageComponent implements OnInit, OnDestroy {
   fileName: string;
   filenameSub: Subscription;
   modes: any[];
+  maxEditors: number;
 
   constructor(
     private store: Store<NewProjectState>
@@ -32,6 +34,7 @@ export class NewProjectPageComponent implements OnInit, OnDestroy {
     });
 
     this.modes = CodeMirror.modeInfo.filter(mode => mode.mode !== 'rpm');
+    this.maxEditors = environment.maxEditors;
   }
 
   ngOnInit() {

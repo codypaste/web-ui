@@ -14,7 +14,7 @@
           class="ui label">X</div>
       </a>
 
-      <a class="item" (click)="onAddEditor()">
+      <a *ngIf="(numberOfOpenedEditors$ | async) < maxEditors" class="item" (click)="onAddEditor()">
         <i class="plus icon"></i>
       </a>
     </div>

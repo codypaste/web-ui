@@ -1,44 +1,41 @@
-import { Directive } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { NewProjectState } from './_store/newProjectStore';
+import { Directive, OnDestroy } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { NewProjectState, getActiveEditorSyntax } from './_store/newProjectStore';
 import * as fromActions from './_store/actions';
+import { Observable, Subscription } from 'rxjs';
 
 declare var $: any;
-
-const alreadyLoaded = [];
-
-const loadScipt = async (scriptName) => {
-  // return new Promise(resolve => {
-  //   const scriptElement = document.createElement('script');
-  //   scriptElement.src = scriptName;
-  //   scriptElement.onload = resolve;
-  //   document.body.appendChild(scriptElement);
-  // });
-};
-
-
 @Directive({
   selector: '[appSelect]'
 })
-export class SelectDirective {
+export class SelectDirective implements OnDestroy {
+
+  activeEditorSyntax$: Observable<string>;
+  syntaxSub: Subscription;
+  syntax: string;
+
 
   constructor(
     private store: Store<NewProjectState>
   ) {
-    setTimeout(() => {
-      $('.ui.dropdown').dropdown({
-        onChange: async (val) => {
-          const targetScriptName = `cm-${val}.js`;
+    this.activeEditorSyntax$ = store.pipe(select(getActiveEditorSyntax));
+    this.syntaxSub = this.activeEditorSyntax$.subscribe(syntax => {
+      $('#syntaxSelector').dropdown('set selected', syntax);
+    });
 
-          if (val === 'null' || alreadyLoaded.includes(targetScriptName)) {
-            return;
-          }
-          await loadScipt(targetScriptName);
-          alreadyLoaded.push(targetScriptName);
+    setTimeout(() => {
+      $('#syntaxSelector').dropdown({
+        onChange: async (val) => {
           this.store.dispatch(new fromActions.SetSyntaxForActiveEditorAction(val));
         }
       });
+
+      $('#syntaxSelector').dropdown('set selected', 'Plain Text');
     }, 0);
+  }
+
+  ngOnDestroy() {
+    this.syntaxSub.unsubscribe();
   }
 
 }

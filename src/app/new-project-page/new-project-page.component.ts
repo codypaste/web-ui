@@ -31,7 +31,7 @@ export class NewProjectPageComponent implements OnInit, OnDestroy {
       this.fileName = editor.title;
     });
 
-    this.modes = CodeMirror.modeInfo;
+    this.modes = CodeMirror.modeInfo.filter(mode => mode.mode !== 'rpm');
   }
 
   ngOnInit() {

@@ -23,8 +23,7 @@ export class EditorDirective implements OnDestroy {
     CodeMirror.modeURL = 'cm-%N.js';
 
     this.editor = new CodeMirror.fromTextArea(el.nativeElement, {
-      lineNumbers: true,
-      mode: 'plaintext'
+      lineNumbers: true
     });
 
     this.editors$ = store.pipe(select(getEditors));
@@ -35,11 +34,14 @@ export class EditorDirective implements OnDestroy {
       const currentMode = this.editor.getOption('mode');
       let newMode = editor.syntax;
       if (!newMode) {
-        newMode = 'plaintext';
+        newMode = 'Plain Text';
       }
+
+      const foundMode = CodeMirror.findModeByName(newMode);
+      newMode = foundMode.mode;
+
       if (newMode && newMode !== currentMode) {
         this.editor.setOption('mode', newMode);
-        console.log(newMode);
         CodeMirror.autoLoadMode(this.editor, newMode);
       }
     });

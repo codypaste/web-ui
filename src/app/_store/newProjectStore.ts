@@ -11,9 +11,16 @@ export interface NewProjectState {
   activeEditor: EditorModel;
 }
 
-const initialEditor = new EditorModel();
-initialEditor.id = uuid();
-initialEditor.title = 'unnamed';
+const getInitialEditor = () => {
+  const x = new EditorModel();
+  x.id = uuid();
+  x.title = 'unnamed';
+  x.syntax = 'Plain Text';
+  x.content = '';
+  return x;
+};
+
+const initialEditor = getInitialEditor();
 
 const initialState: NewProjectState = {
   activeEditorId: initialEditor.id,
@@ -25,12 +32,12 @@ const initialState: NewProjectState = {
 export function reducer(state = initialState, action: fromActions.ALL_ACTIONS): NewProjectState {
   switch (action.type) {
     case fromActions.ADD_EDITOR: {
-      const newEditor = new EditorModel();
-      newEditor.id = uuid();
-      newEditor.title = 'unnamed';
+      const newEditor = getInitialEditor();
       const newState = {
         ...state,
         editors: [...state.editors, newEditor],
+        activeEditorId: newEditor.id,
+        activeEditor: newEditor,
         numberOfOpenedEditors: state.numberOfOpenedEditors + 1
       };
       return newState;
@@ -133,4 +140,9 @@ export const getActiveEditor = createSelector(
 export const getNumberOfOpenedEditors = createSelector(
   getNewProjectState,
   (state: NewProjectState) => state.numberOfOpenedEditors
+);
+
+export const getActiveEditorSyntax = createSelector(
+  getNewProjectState,
+  (state: NewProjectState) => state.activeEditor.syntax
 );

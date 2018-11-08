@@ -27,12 +27,12 @@
         </div>
 
         <div appSelect class="field six wide">
-          <div class="ui fluid search selection dropdown">
+          <div id="syntaxSelector" class="ui fluid selection dropdown">
             <input type="hidden" name="syntax">
             <i class="dropdown icon"></i>
             <div class="default text">Select syntax</div>
             <div class="menu">
-              <div *ngFor="let mode of modes" class="item" attr.data-value="{{mode.mode}}">{{mode.name}}</div>
+              <div *ngFor="let mode of modes" class="item" attr.data-value="{{mode.name}}">{{mode.name}}</div>
             </div>
           </div>
         </div>

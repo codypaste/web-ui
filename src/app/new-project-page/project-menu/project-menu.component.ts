@@ -19,6 +19,7 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
     expiration: new FormControl('-1'),
     visibility: new FormControl('public'),
     password  : new FormControl(''),
+    encryption: new FormControl(true)
   });
 
   constructor() { }

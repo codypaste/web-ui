@@ -1,8 +1,7 @@
-import { Action } from '@ngrx/store';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import * as uuid from 'uuid/v4';
 import { EditorModel } from '../_models/EditorModel';
 import * as fromActions from './actions';
+import * as uuid from 'uuid/v4';
 
 export interface NewProjectState {
   activeEditorId: string;

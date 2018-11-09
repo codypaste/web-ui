@@ -14,7 +14,6 @@ export class SelectDirective implements OnDestroy {
   syntaxSub: Subscription;
   syntax: string;
 
-
   constructor(
     private store: Store<NewProjectState>
   ) {

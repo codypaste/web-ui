@@ -1,10 +1,10 @@
 import { Directive, ElementRef, OnDestroy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-import { NewProjectState, getEditors, getActiveEditor } from '../_store/newProjectStore';
-import * as fromAction from '../_store/actions';
-import { EditorModel } from '../_models/EditorModel';
 
+import { NewProjectState, getEditors, getActiveEditor } from '../../_store/newProjectStore';
+import * as fromAction from '../../_store/actions';
+import { EditorModel } from '../../_models/EditorModel';
 
 declare var CodeMirror: any;
 

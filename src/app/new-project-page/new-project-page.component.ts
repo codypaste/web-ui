@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Store, select } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-import { NewProjectState, getEditors, getActiveEditor, getNumberOfOpenedEditors} from '../_store/newProjectStore';
-import * as fromActions from '../_store/actions';
+import { Store, select } from '@ngrx/store';
+
 import { EditorModel } from '../_models/EditorModel';
+import { NewProjectState, getEditors, getActiveEditor, getNumberOfOpenedEditors} from '../_store/newProjectStore';
 import {environment} from '../../environments/environment';
-import { EncryptionService } from '../_services/encryption.service';
+import * as fromActions from '../_store/actions';
 
 declare var CodeMirror: any;
 @Component({

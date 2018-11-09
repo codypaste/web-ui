@@ -1,15 +1,17 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormControl, ValidationErrors } from '@angular/forms';
-import { Validators } from '@angular/forms';
-import { Subscription, Observable, forkJoin } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
+import { FormGroup, FormControl, ValidationErrors } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
-import { NewProjectState, getEditors } from '../../_store/newProjectStore';
+import { Subscription, Observable, forkJoin } from 'rxjs';
+import { Validators } from '@angular/forms';
+import * as moment from 'moment';
+
 import { ApiService } from '../../_services/api.service';
+import { EditorModel } from '../../_models/EditorModel';
 import { EncryptionService } from '../../_services/encryption.service';
 import { GroupModel } from '../../_models/GroupModel';
-import { EditorModel } from '../../_models/EditorModel';
 import { GroupPostResponseModel } from 'src/app/_models/GroupPostResponseModel';
+import { NewProjectState, getEditors } from '../../_store/newProjectStore';
 import { SnippetModel } from 'src/app/_models/SnippetModel';
 
 @Component({
@@ -40,7 +42,7 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
     private store: Store<NewProjectState>,
     private encryption: EncryptionService
   ) {
-    this.editors$ = store.pipe(select(getEditors));
+    this.editors$ = this.store.pipe(select(getEditors));
     this.editorsSub = this.editors$.subscribe(res => this.editors = res);
   }
 
@@ -71,7 +73,7 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
     const expirationDuration = this.projectMenuForm.get('expiration').value;
 
     if (expirationDatetime !== '-1') {
-      // add date calcualtion;
+      expirationDatetime = moment().add(moment.duration(expirationDuration)).format();
     }
 
     const group = new GroupModel();

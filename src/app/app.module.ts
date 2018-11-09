@@ -13,11 +13,10 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { EditorComponent } from './new-project-page/editor/editor.component';
 import { ProjectMenuComponent } from './new-project-page/project-menu/project-menu.component';
-import { EditorDirective } from './new-project-page/editor.directive';
+import { EditorDirective } from './new-project-page/editor/editor.directive';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { SelectDirective } from './new-project-page/editor-menu/select.directive';
-import { SyntaxSelectComponent } from './new-project-page/syntax-select/syntax-select.component';
 import { EditorMenuComponent } from './new-project-page/editor-menu/editor-menu.component';
 import { EditorTabsComponent } from './new-project-page/editor-tabs/editor-tabs.component';
 
@@ -31,7 +30,6 @@ import { EditorTabsComponent } from './new-project-page/editor-tabs/editor-tabs.
     ProjectMenuComponent,
     EditorDirective,
     SelectDirective,
-    SyntaxSelectComponent,
     EditorMenuComponent,
     EditorTabsComponent
   ],

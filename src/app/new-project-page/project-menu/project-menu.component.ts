@@ -8,12 +8,13 @@ import * as moment from 'moment';
 
 import { ApiService } from 'src/app/_services/api.service';
 import { EditorModel } from 'src/app/_models/EditorModel';
-import { EncryptionService } from 'src/app/_services/encryption.service';
+import { EncryptionService, EncryptionKey } from 'src/app/_services/encryption.service';
 import { GroupModel } from 'src/app/_models/GroupModel';
 import { GroupPostResponseModel } from 'src/app/_models/GroupPostResponseModel';
 import { NewProjectState, getEditors } from 'src/app/_store/newProjectStore';
 import { SnippetModel } from 'src/app/_models/SnippetModel';
 import { ToastrService } from 'src/app/_services/toastr.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-menu',
@@ -44,6 +45,7 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
     private store: Store<NewProjectState>,
     private encryption: EncryptionService,
     private toastr: ToastrService,
+    private router: Router,
   ) {
     this.editors$ = this.store.pipe(select(getEditors));
     this.editorsSub = this.editors$.subscribe(res => this.editors = res);
@@ -90,7 +92,7 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
     const isPublic = this.projectMenuForm.get('visibility').value === 'public' ? true : false;
     const isEncryptionEnabled = this.projectMenuForm.get('encryption').value;
 
-    let encryptionKey;
+    let encryptionKey: EncryptionKey;
 
     let expirationDatetime;
     const expirationDuration = this.projectMenuForm.get('expiration').value;
@@ -105,7 +107,7 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
     group.expirationDatetime = expirationDatetime;
     if (isEncryptionEnabled) {
       encryptionKey = this.encryption.generate256BitKey();
-      group.title = this.encryption.encrypt(group.title, encryptionKey);
+      group.title = this.encryption.encrypt(group.title, encryptionKey.key);
     }
     if (!isPublic) {
       group.password = this.projectMenuForm.get('password').value;
@@ -121,8 +123,8 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
         let snippetContent = editor.content || '';
 
         if (isEncryptionEnabled) {
-          snippetName = this.encryption.encrypt(snippetName, encryptionKey);
-          snippetContent = this.encryption.encrypt(snippetContent, encryptionKey);
+          snippetName = this.encryption.encrypt(snippetName, encryptionKey.key);
+          snippetContent = this.encryption.encrypt(snippetContent, encryptionKey.key);
         }
 
         snippet.snippetName = snippetName;
@@ -133,6 +135,9 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
       });
 
       await Promise.all(snippetsRequests);
+      this.router.navigate(['/view', res._id], {
+        queryParams: { key: encryptionKey.normalized }
+      });
     } catch (e) {
       this.toastr.error('Something went wrong. Try again');
       this.isSubmitted = false;

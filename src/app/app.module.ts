@@ -19,6 +19,7 @@ import { environment } from 'src/environments/environment';
 import { SelectDirective } from 'src/app/new-project-page/editor-menu/select.directive';
 import { EditorMenuComponent } from 'src/app/new-project-page/editor-menu/editor-menu.component';
 import { EditorTabsComponent } from 'src/app/new-project-page/editor-tabs/editor-tabs.component';
+import { ViewPageComponent } from './view-page/view-page.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { EditorTabsComponent } from 'src/app/new-project-page/editor-tabs/editor
     EditorDirective,
     SelectDirective,
     EditorMenuComponent,
-    EditorTabsComponent
+    EditorTabsComponent,
+    ViewPageComponent
   ],
   imports: [
     BrowserModule,

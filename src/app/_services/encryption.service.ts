@@ -2,6 +2,11 @@ import { Injectable } from '@angular/core';
 import * as uuid from 'uuid/v4';
 import * as aesjs from 'aes-js';
 
+export class EncryptionKey {
+  key: number[];
+  normalized: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -9,8 +14,12 @@ export class EncryptionService {
 
   constructor() { }
 
-  generate256BitKey(): number[] {
-    return uuid().split('').filter(char => char !== '-').map(char => char.charCodeAt(0));
+  generate256BitKey(): EncryptionKey {
+    const key = new EncryptionKey();
+    const u = uuid();
+    key.normalized = u.split('').filter(char => char !== '-').join('');
+    key.key = key.normalized.split('').map(char => char.charCodeAt(0));
+    return key;
   }
 
   encrypt(s: string, key: number[]): string {

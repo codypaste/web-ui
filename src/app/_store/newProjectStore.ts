@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { EditorModel } from '../_models/EditorModel';
+import { EditorModel } from 'src/app/_models/EditorModel';
 import * as fromActions from './actions';
 import * as uuid from 'uuid/v4';
 

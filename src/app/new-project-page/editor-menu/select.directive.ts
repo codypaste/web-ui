@@ -1,8 +1,9 @@
 import { Directive, OnDestroy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { NewProjectState, getActiveEditorSyntax } from '../../_store/newProjectStore';
-import * as fromActions from '../../_store/actions';
 import { Observable, Subscription } from 'rxjs';
+
+import { NewProjectState, getActiveEditorSyntax } from 'src/app/_store/newProjectStore';
+import * as fromActions from 'src/app/_store/actions';
 
 declare var $: any;
 @Directive({

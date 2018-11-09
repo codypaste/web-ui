@@ -6,12 +6,12 @@ import { Subscription, Observable, forkJoin } from 'rxjs';
 import { Validators } from '@angular/forms';
 import * as moment from 'moment';
 
-import { ApiService } from '../../_services/api.service';
-import { EditorModel } from '../../_models/EditorModel';
-import { EncryptionService } from '../../_services/encryption.service';
-import { GroupModel } from '../../_models/GroupModel';
+import { ApiService } from 'src/app/_services/api.service';
+import { EditorModel } from 'src/app/_models/EditorModel';
+import { EncryptionService } from 'src/app/_services/encryption.service';
+import { GroupModel } from 'src/app/_models/GroupModel';
 import { GroupPostResponseModel } from 'src/app/_models/GroupPostResponseModel';
-import { NewProjectState, getEditors } from '../../_store/newProjectStore';
+import { NewProjectState, getEditors } from 'src/app/_store/newProjectStore';
 import { SnippetModel } from 'src/app/_models/SnippetModel';
 
 @Component({

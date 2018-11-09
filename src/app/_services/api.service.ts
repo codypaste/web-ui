@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
-import { GroupModel } from '../_models/GroupModel';
-import { GroupPostResponseModel } from '../_models/GroupPostResponseModel';
+import { environment } from 'src/environments/environment';
+import { GroupModel } from 'src/app/_models/GroupModel';
+import { GroupPostResponseModel } from 'src/app/_models/GroupPostResponseModel';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { SnippetModel } from '../_models/SnippetModel';
+import { SnippetModel } from 'src/app/_models/SnippetModel';
 
 @Injectable({
   providedIn: 'root'

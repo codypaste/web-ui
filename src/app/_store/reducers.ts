@@ -1,6 +1,6 @@
 import { ActionReducerMap, ActionReducer, MetaReducer } from '@ngrx/store';
 import * as fromNewProject from './newProjectStore';
-import { environment } from '../../environments/environment';
+import { environment } from 'src/environments/environment';
 
 export interface AppState {
   newProjectState: fromNewProject.NewProjectState;

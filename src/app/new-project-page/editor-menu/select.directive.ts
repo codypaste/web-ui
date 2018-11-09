@@ -1,7 +1,7 @@
 import { Directive, OnDestroy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { NewProjectState, getActiveEditorSyntax } from './_store/newProjectStore';
-import * as fromActions from './_store/actions';
+import { NewProjectState, getActiveEditorSyntax } from '../../_store/newProjectStore';
+import * as fromActions from '../../_store/actions';
 import { Observable, Subscription } from 'rxjs';
 
 declare var $: any;

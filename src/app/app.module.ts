@@ -16,7 +16,10 @@ import { ProjectMenuComponent } from './new-project-page/project-menu/project-me
 import { EditorDirective } from './new-project-page/editor.directive';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { SelectDirective } from './select.directive';
+import { SelectDirective } from './new-project-page/editor-menu/select.directive';
+import { SyntaxSelectComponent } from './new-project-page/syntax-select/syntax-select.component';
+import { EditorMenuComponent } from './new-project-page/editor-menu/editor-menu.component';
+import { EditorTabsComponent } from './new-project-page/editor-tabs/editor-tabs.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { SelectDirective } from './select.directive';
     EditorComponent,
     ProjectMenuComponent,
     EditorDirective,
-    SelectDirective
+    SelectDirective,
+    SyntaxSelectComponent,
+    EditorMenuComponent,
+    EditorTabsComponent
   ],
   imports: [
     BrowserModule,

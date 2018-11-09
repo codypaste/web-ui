@@ -6,41 +6,10 @@
     <app-project-menu></app-project-menu>
   </div>
   <div class="Tabs">
-    <div class="ui secondary pointing menu">
-      <a class="item" *ngFor="let editor of editors$ | async; index as i" (click)="switchActiveEditor(i)"
-        [ngClass]="{
-          'active tab-switch': editor.id === (activeEditor$ | async).id
-        }">
-        {{editor.title || 'unnamed'}}
-        <i (click)="onCloseEditor(i)" *ngIf="editor.id === (activeEditor$ | async).id && (numberOfOpenedEditors$ | async) > 1"
-          class="times circle outline icon close-tab-icon"></i>
-      </a>
-
-      <a *ngIf="(numberOfOpenedEditors$ | async) < maxEditors" class="item" (click)="onAddEditor()">
-        <i class="plus icon"></i>
-      </a>
-    </div>
+    <app-editor-tabs></app-editor-tabs>
   </div>
   <div class="EditorMenu">
-    <div class="ui form">
-      <div class="fields">
-        <div class="field">
-          <input [(ngModel)]="fileName" (change)="onFilenameChange()" type="text" placeholder="unnamed">
-        </div>
-
-        <div appSelect class="field six wide">
-          <div id="syntaxSelector" class="ui fluid search selection dropdown">
-            <input type="hidden" name="syntax">
-            <i class="dropdown icon"></i>
-            <div class="default text">Select syntax</div>
-            <div class="menu">
-              <div *ngFor="let mode of modes" class="item" attr.data-value="{{mode.name}}">{{mode.name}}</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
+    <app-editor-menu></app-editor-menu>
   </div>
   <div class="Editor">
     <app-editor></app-editor>

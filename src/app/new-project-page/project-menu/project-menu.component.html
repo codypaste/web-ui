@@ -44,7 +44,7 @@
     </div>
   </div>
 
-  <button type="submit" [disabled]="!projectMenuForm.valid" class="ui primary basic button">
+  <button type="submit" [disabled]="!projectMenuForm.valid || isSubmitted" class="ui primary basic button">
     <i class="share alternate icon"></i>
     Share
   </button>

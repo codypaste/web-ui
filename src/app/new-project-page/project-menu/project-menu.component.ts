@@ -13,6 +13,7 @@ import { GroupModel } from 'src/app/_models/GroupModel';
 import { GroupPostResponseModel } from 'src/app/_models/GroupPostResponseModel';
 import { NewProjectState, getEditors } from 'src/app/_store/newProjectStore';
 import { SnippetModel } from 'src/app/_models/SnippetModel';
+import { ToastrService } from 'src/app/_services/toastr.service';
 
 @Component({
   selector: 'app-project-menu',
@@ -24,6 +25,7 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
   isPrivate = false;
   errors: ValidationErrors;
   visibilitySub: Subscription;
+  isSubmitted = false;
 
   projectMenuForm = new FormGroup({
     title: new FormControl(''),
@@ -40,7 +42,8 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
   constructor(
     private api: ApiService,
     private store: Store<NewProjectState>,
-    private encryption: EncryptionService
+    private encryption: EncryptionService,
+    private toastr: ToastrService,
   ) {
     this.editors$ = this.store.pipe(select(getEditors));
     this.editorsSub = this.editors$.subscribe(res => this.editors = res);
@@ -67,8 +70,28 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
     this.editorsSub.unsubscribe();
   }
 
-  onSubmit() {
+  async onSubmit() {
+    if (this.isSubmitted) {
+      return;
+    }
+
+    this.isSubmitted = true;
+
+    const anyEmpty = this.editors.some(e => {
+      return e.content.length === 0;
+    });
+
+    if (anyEmpty) {
+      this.toastr.error('Please fill all opened editors with text.');
+      this.isSubmitted = false;
+      return;
+    }
+
     const isPublic = this.projectMenuForm.get('visibility').value === 'public' ? true : false;
+    const isEncryptionEnabled = this.projectMenuForm.get('encryption').value;
+
+    let encryptionKey;
+
     let expirationDatetime;
     const expirationDuration = this.projectMenuForm.get('expiration').value;
 
@@ -80,42 +103,43 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
     group.title = this.projectMenuForm.get('title').value || 'unnamed';
     group.isPublic = isPublic;
     group.expirationDatetime = expirationDatetime;
-
+    if (isEncryptionEnabled) {
+      encryptionKey = this.encryption.generate256BitKey();
+      group.title = this.encryption.encrypt(group.title, encryptionKey);
+    }
     if (!isPublic) {
       group.password = this.projectMenuForm.get('password').value;
     }
 
-    let encryptedEditors = [...this.editors];
-    if (this.projectMenuForm.get('encryption').value) {
-      const key = this.encryption.generate256BitKey();
-      group.title = this.encryption.encrypt(group.title, key);
-      encryptedEditors = encryptedEditors.map(e => {
-        e.content = this.encryption.encrypt(e.content, key);
-        e.title = this.encryption.encrypt(e.title, key);
-        return e;
+    try {
+      const res = await this.api.createGroup(group);
+      const snippetsRequests = [];
+      this.editors.forEach(editor => {
+        const snippet = new SnippetModel();
+
+        let snippetName = editor.title || 'unnamed';
+        let snippetContent = editor.content || '';
+
+        if (isEncryptionEnabled) {
+          snippetName = this.encryption.encrypt(snippetName, encryptionKey);
+          snippetContent = this.encryption.encrypt(snippetContent, encryptionKey);
+        }
+
+        snippet.snippetName = snippetName;
+        snippet.syntax = editor.syntax;
+        snippet.snippet = snippetContent;
+        snippet.group = res._id;
+        snippetsRequests.push(this.api.createSnippet(snippet));
       });
+
+      await Promise.all(snippetsRequests);
+    } catch (e) {
+      this.toastr.error('Something went wrong. Try again');
+      this.isSubmitted = false;
+      return;
     }
 
-    console.log(group);
-
-    this.api.createGroup(group).pipe(
-      flatMap((res: GroupPostResponseModel) => {
-        const snippetsRequests = [];
-        encryptedEditors.forEach(e => {
-          const snippet = new SnippetModel();
-          snippet.snippetName = e.title || 'unnamed';
-          snippet.syntax = e.syntax;
-          snippet.snippet = e.content;
-          snippet.group = res._id;
-          console.log(snippet);
-          snippetsRequests.push(this.api.createSnippet(snippet));
-        });
-
-        return forkJoin(snippetsRequests);
-      })
-    ).subscribe((res) => {
-      console.log(res);
-    });
+    this.isSubmitted = false;
   }
 
 }

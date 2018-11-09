@@ -24,6 +24,7 @@
     "@angular/service-worker": "~7.0.2",
     "@ngrx/core": "^1.2.0",
     "@ngrx/store": "^6.1.2",
+    "aes-js": "^3.1.1",
     "codemirror": "^5.41.0",
     "core-js": "^2.5.7",
     "jquery": "^3.3.1",

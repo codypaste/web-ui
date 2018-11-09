@@ -5,6 +5,7 @@ import { NewProjectState, getEditors, getActiveEditor, getNumberOfOpenedEditors}
 import * as fromActions from '../_store/actions';
 import { EditorModel } from '../_models/EditorModel';
 import {environment} from '../../environments/environment';
+import { EncryptionService } from '../encryption.service';
 
 declare var CodeMirror: any;
 @Component({
@@ -24,7 +25,7 @@ export class NewProjectPageComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store<NewProjectState>
-  ) {
+    ) {
     this.editors$ = store.pipe(select(getEditors));
     this.activeEditor$ = store.pipe(select(getActiveEditor));
     this.numberOfOpenedEditors$ = store.pipe(select(getNumberOfOpenedEditors));

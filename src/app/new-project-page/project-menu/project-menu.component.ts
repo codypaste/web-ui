@@ -6,6 +6,7 @@ import { flatMap } from 'rxjs/operators';
 import { Store, select } from '@ngrx/store';
 import { NewProjectState, getEditors } from '../../_store/newProjectStore';
 import { ApiService } from '../../api.service';
+import { EncryptionService } from '../../encryption.service';
 import { GroupModel } from '../../_models/GroupModel';
 import { EditorModel } from '../../_models/EditorModel';
 import { GroupPostResponseModel } from 'src/app/_models/GroupPostResponseModel';
@@ -37,6 +38,7 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
   constructor(
     private api: ApiService,
     private store: Store<NewProjectState>,
+    private encryption: EncryptionService
   ) {
     this.editors$ = store.pipe(select(getEditors));
     this.editorsSub = this.editors$.subscribe(res => this.editors = res);
@@ -81,15 +83,29 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
       group.password = this.projectMenuForm.get('password').value;
     }
 
+    let encryptedEditors = [...this.editors];
+    if (this.projectMenuForm.get('encryption').value) {
+      const key = this.encryption.generate256BitKey();
+      group.title = this.encryption.encrypt(group.title, key);
+      encryptedEditors = encryptedEditors.map(e => {
+        e.content = this.encryption.encrypt(e.content, key);
+        e.title = this.encryption.encrypt(e.title, key);
+        return e;
+      });
+    }
+
+    console.log(group);
+
     this.api.createGroup(group).pipe(
       flatMap((res: GroupPostResponseModel) => {
         const snippetsRequests = [];
-        this.editors.forEach(e => {
+        encryptedEditors.forEach(e => {
           const snippet = new SnippetModel();
           snippet.snippetName = e.title || 'unnamed';
           snippet.syntax = e.syntax;
           snippet.snippet = e.content;
           snippet.group = res._id;
+          console.log(snippet);
           snippetsRequests.push(this.api.createSnippet(snippet));
         });
 

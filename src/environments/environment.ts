@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  maxEditors: 5
+  maxEditors: 5,
+  snippetsEndpoint: 'http://localhost:3000/snippets',
+  groupsEndpoint: 'http://localhost:3000/groups',
+
 };
 
 /*

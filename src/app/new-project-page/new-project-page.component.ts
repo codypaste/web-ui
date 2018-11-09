@@ -5,7 +5,7 @@ import { NewProjectState, getEditors, getActiveEditor, getNumberOfOpenedEditors}
 import * as fromActions from '../_store/actions';
 import { EditorModel } from '../_models/EditorModel';
 import {environment} from '../../environments/environment';
-import { EncryptionService } from '../encryption.service';
+import { EncryptionService } from '../_services/encryption.service';
 
 declare var CodeMirror: any;
 @Component({

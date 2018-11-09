@@ -5,6 +5,7 @@ import { GroupModel } from './_models/GroupModel';
 import { GroupPostResponseModel } from './_models/GroupPostResponseModel';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { SnippetModel } from './_models/SnippetModel';
 
 @Injectable({
   providedIn: 'root'
@@ -36,9 +37,9 @@ export class ApiService {
     );
   }
 
-  createSnippets(payload: GroupModel): Observable<GroupPostResponseModel> {
-    return this.http.post<GroupModel>(environment.groupsEndpoint, payload).pipe(
-      tap(_ => console.log('create')),
+  createSnippet(payload: SnippetModel): Observable<GroupPostResponseModel> {
+    return this.http.post<SnippetModel>(environment.snippetsEndpoint, payload).pipe(
+      tap(_ => console.log('created snipepts')),
       catchError(this.handleError<any>('post', payload))
     );
   }

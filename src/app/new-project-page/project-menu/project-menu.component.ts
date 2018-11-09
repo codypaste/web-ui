@@ -1,11 +1,15 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, ValidationErrors } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable, forkJoin } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
+import { Store, select } from '@ngrx/store';
+import { NewProjectState, getEditors } from '../../_store/newProjectStore';
 import { ApiService } from '../../api.service';
-import {GroupModel} from '../../_models/GroupModel';
+import { GroupModel } from '../../_models/GroupModel';
+import { EditorModel } from '../../_models/EditorModel';
 import { GroupPostResponseModel } from 'src/app/_models/GroupPostResponseModel';
+import { SnippetModel } from 'src/app/_models/SnippetModel';
 
 @Component({
   selector: 'app-project-menu',
@@ -26,9 +30,17 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
     encryption: new FormControl(true)
   });
 
+  editors$: Observable<EditorModel[]>;
+  editorsSub: Subscription;
+  editors: EditorModel[];
+
   constructor(
     private api: ApiService,
-  ) { }
+    private store: Store<NewProjectState>,
+  ) {
+    this.editors$ = store.pipe(select(getEditors));
+    this.editorsSub = this.editors$.subscribe(res => this.editors = res);
+  }
 
   ngOnInit() {
     this.visibilitySub = this.projectMenuForm.get('visibility').valueChanges.subscribe(val => {
@@ -48,6 +60,7 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.visibilitySub.unsubscribe();
+    this.editorsSub.unsubscribe();
   }
 
   onSubmit() {
@@ -70,8 +83,17 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
 
     this.api.createGroup(group).pipe(
       flatMap((res: GroupPostResponseModel) => {
-        console.log(res._id);
-        return this.api.createGroup(group);
+        const snippetsRequests = [];
+        this.editors.forEach(e => {
+          const snippet = new SnippetModel();
+          snippet.snippetName = e.title || 'unnamed';
+          snippet.syntax = e.syntax;
+          snippet.snippet = e.content;
+          snippet.group = res._id;
+          snippetsRequests.push(this.api.createSnippet(snippet));
+        });
+
+        return forkJoin(snippetsRequests);
       })
     ).subscribe((res) => {
       console.log(res);

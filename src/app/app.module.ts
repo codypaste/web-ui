@@ -9,7 +9,6 @@ import { reducers, metaReducers } from 'src/app/_store/reducers';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AppComponent } from 'src/app/app.component';
 import { NewProjectPageComponent } from 'src/app/new-project-page/new-project-page.component';
-import { HeaderComponent } from 'src/app/header/header.component';
 import { FooterComponent } from 'src/app/footer/footer.component';
 import { EditorComponent } from 'src/app/new-project-page/editor/editor.component';
 import { ProjectMenuComponent } from 'src/app/new-project-page/project-menu/project-menu.component';
@@ -20,12 +19,16 @@ import { SelectDirective } from 'src/app/new-project-page/editor-menu/select.dir
 import { EditorMenuComponent } from 'src/app/new-project-page/editor-menu/editor-menu.component';
 import { EditorTabsComponent } from 'src/app/new-project-page/editor-tabs/editor-tabs.component';
 import { ViewPageComponent } from './view-page/view-page.component';
+import { EditorViewTabsComponent } from './view-page/editor-view-tabs/editor-view-tabs.component';
+import { ProjectInfoComponent } from './view-page/project-info/project-info.component';
+import { ShareComponent } from './view-page/share/share.component';
+import { ViewEditorComponent } from './view-page/view-editor/view-editor.component';
+import { ViewEditorDirective } from './view-page/view-editor/view-editor.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewProjectPageComponent,
-    HeaderComponent,
     FooterComponent,
     EditorComponent,
     ProjectMenuComponent,
@@ -33,7 +36,12 @@ import { ViewPageComponent } from './view-page/view-page.component';
     SelectDirective,
     EditorMenuComponent,
     EditorTabsComponent,
-    ViewPageComponent
+    ViewPageComponent,
+    EditorViewTabsComponent,
+    ProjectInfoComponent,
+    ShareComponent,
+    ViewEditorComponent,
+    ViewEditorDirective
   ],
   imports: [
     BrowserModule,

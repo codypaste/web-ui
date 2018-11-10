@@ -1,0 +1,51 @@
+.grid-container {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: max-content max-content max-content 1fr 1fr max-content;
+  grid-template-areas: "Meta Tabs Tabs Tabs Tabs Tabs Tabs" "Meta Editor Editor Editor Editor Editor Editor" "Meta Editor Editor Editor Editor Editor Editor" "Meta Editor Editor Editor Editor Editor Editor" "Meta Editor Editor Editor Editor Editor Editor" "Footer Footer Footer Footer Footer Footer Footer";
+}
+.Footer {
+  grid-area: Footer;
+  align-self: end;
+  padding: 1rem;
+  background-color: #303F9F;
+  color: #C5CAE9;
+}
+
+.Tabs {
+  grid-area: Tabs;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.Editor {
+  grid-area: Editor;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+.Meta {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: max-content max-content;
+  grid-template-areas: "Info" "Share";
+  grid-area: Meta;
+  margin-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-right: 1px solid #eee;
+  margin-bottom: 1rem;
+}
+
+.Info {
+  grid-area: Info;
+  margin-bottom: 1rem;
+}
+
+.Share {
+  grid-area: Share;
+}

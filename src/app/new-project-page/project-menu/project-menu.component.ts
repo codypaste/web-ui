@@ -1,8 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { flatMap } from 'rxjs/operators';
 import { FormGroup, FormControl, ValidationErrors } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
-import { Subscription, Observable, forkJoin } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { Validators } from '@angular/forms';
 import * as moment from 'moment';
 
@@ -10,7 +9,6 @@ import { ApiService } from 'src/app/_services/api.service';
 import { EditorModel } from 'src/app/_models/EditorModel';
 import { EncryptionService, EncryptionKey } from 'src/app/_services/encryption.service';
 import { GroupModel } from 'src/app/_models/GroupModel';
-import { GroupPostResponseModel } from 'src/app/_models/GroupPostResponseModel';
 import { NewProjectState, getEditors } from 'src/app/_store/newProjectStore';
 import { SnippetModel } from 'src/app/_models/SnippetModel';
 import { ToastrService } from 'src/app/_services/toastr.service';
@@ -97,7 +95,7 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
     let expirationDatetime;
     const expirationDuration = this.projectMenuForm.get('expiration').value;
 
-    if (expirationDatetime !== '-1') {
+    if (expirationDuration !== '-1') {
       expirationDatetime = moment().add(moment.duration(expirationDuration)).format();
     }
 

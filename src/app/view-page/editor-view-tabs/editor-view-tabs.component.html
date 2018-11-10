@@ -1,0 +1,7 @@
+<div class="ui secondary pointing menu">
+  <a class="item" *ngFor="let editor of editors$ | async; index as i" (click)="switchActiveEditor(i)" [ngClass]="{
+      'active tab-switch': editor.id === (activeEditor$ | async).id
+    }">
+    {{editor.title || 'unnamed'}}
+  </a>
+</div>

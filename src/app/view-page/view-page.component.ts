@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/_services/api.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-view-page',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private api: ApiService,
+    private route: ActivatedRoute,
+  ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id');
+    const key = this.route.snapshot.queryParams.key;
+    const x = await this.api.retrieveProject(id);
+    console.log(id, key, x);
   }
 
 }

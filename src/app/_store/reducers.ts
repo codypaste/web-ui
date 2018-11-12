@@ -1,13 +1,16 @@
 import { ActionReducerMap, ActionReducer, MetaReducer } from '@ngrx/store';
 import * as fromNewProject from './newProjectStore';
+import * as fromViewStore from './viewStore';
 import { environment } from 'src/environments/environment';
 
 export interface AppState {
   newProjectState: fromNewProject.NewProjectState;
+  viewState: fromViewStore.ViewState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
-  newProjectState: fromNewProject.reducer
+  newProjectState: fromNewProject.reducer,
+  viewState: fromViewStore.reducer
 };
 
 export function logger(reducer: ActionReducer<AppState>): ActionReducer<AppState> {

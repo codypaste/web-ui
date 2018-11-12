@@ -21,3 +21,7 @@ color: #B71C1C;
 .no-bottom-margin {
   margin-bottom: 0px !important;
 }
+
+.share-box {
+  margin-top: 0.5rem !important;
+}

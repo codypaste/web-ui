@@ -4,7 +4,7 @@ import { EditorModel } from 'src/app/_models/EditorModel';
 import { Store, select } from '@ngrx/store';
 
 import { NewProjectState, getEditors, getNumberOfOpenedEditors, getActiveEditor } from 'src/app/_store/newProjectStore';
-import * as fromActions from 'src/app/_store/actions';
+import * as fromActions from 'src/app/_store/newProjectActions';
 import {environment} from 'src/environments/environment';
 
 @Component({

@@ -35,7 +35,8 @@ export class EncryptionService {
   decrypt(encrypted: string, key: string): string {
     const encryptedBytes = aesjs.utils.hex.toBytes(encrypted);
 
-    const aesCtr = new aesjs.ModeOfOperation.ctr(key, new aesjs.Counter(5));
+    const k = key.split('').map(char => char.charCodeAt(0));
+    const aesCtr = new aesjs.ModeOfOperation.ctr(k, new aesjs.Counter(5));
     const decryptedBytes = aesCtr.decrypt(encryptedBytes);
 
     const decryptedText = aesjs.utils.utf8.fromBytes(decryptedBytes);

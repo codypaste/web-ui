@@ -30,7 +30,7 @@
     </select>
   </div>
 
-  <div *ngIf="isPrivate" class="field" [ngClass]="{
+  <div *ngIf="!isPublic" class="field" [ngClass]="{
     'error': !projectMenuForm.controls.password.valid
   }">
     <label>Password</label>

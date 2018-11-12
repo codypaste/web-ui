@@ -1,6 +1,6 @@
 <div class="ui card">
   <div class="content">
-    <div class="header">my code</div>
+    <div class="header">{{ group.title }}</div>
   </div>
   <div class="content">
     <div class="ui feed">
@@ -10,7 +10,7 @@
             Added
           </div>
           <div class="summary">
-            2018-01-01 12:30
+              {{ group.createdAt }}
           </div>
         </div>
       </div>
@@ -30,11 +30,12 @@
             Visibility
           </div>
           <div class="summary">
-            Protected with password
+            {{ group.isPublic ? 'Public' : 'Protected with password' }}
           </div>
         </div>
       </div>
     </div>
-    <div class="ui green message"><i class="lock icon"></i> Encrypted</div>
+    <div *ngIf="group.isEncrypted === true" class="ui green message"><i class="lock icon"></i> Encrypted</div>
+    <div *ngIf="group.isEncrypted === false" class="ui red message"><i class="lock icon"></i> Not encrypted</div>
   </div>
 </div>

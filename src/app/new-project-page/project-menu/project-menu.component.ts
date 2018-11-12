@@ -21,7 +21,7 @@ import { Router } from '@angular/router';
 })
 export class ProjectMenuComponent implements OnInit, OnDestroy {
 
-  isPrivate = false;
+  isPublic = true;
   errors: ValidationErrors;
   visibilitySub: Subscription;
   isSubmitted = false;
@@ -52,13 +52,13 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.visibilitySub = this.projectMenuForm.get('visibility').valueChanges.subscribe(val => {
       if (val === 'private') {
-        this.isPrivate = true;
+        this.isPublic = false;
         this.projectMenuForm.get('password').setValidators([Validators.required]);
         this.projectMenuForm.get('password').setValue('');
         this.projectMenuForm.get('password').updateValueAndValidity();
         return;
       }
-      this.isPrivate = false;
+      this.isPublic = true;
       this.projectMenuForm.get('password').clearValidators();
       this.projectMenuForm.get('password').setValue('');
       this.projectMenuForm.get('password').updateValueAndValidity();
@@ -106,6 +106,7 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
     if (isEncryptionEnabled) {
       encryptionKey = this.encryption.generate256BitKey();
       group.title = this.encryption.encrypt(group.title, encryptionKey.key);
+      group.isEncrypted = true;
     }
     if (!isPublic) {
       group.password = this.projectMenuForm.get('password').value;
@@ -132,12 +133,19 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
         snippetsRequests.push(this.api.createSnippet(snippet));
       });
 
+      const qp: any = {
+        queryParams: {}
+      };
+
+      if (isEncryptionEnabled) {
+        qp.queryParams.key = encryptionKey.normalized;
+      }
+
       await Promise.all(snippetsRequests);
-      this.router.navigate(['/view', res._id], {
-        queryParams: { key: encryptionKey.normalized }
-      });
+      this.router.navigate(['/view', res._id], qp);
     } catch (e) {
       this.toastr.error('Something went wrong. Try again');
+      console.log(e);
       this.isSubmitted = false;
       return;
     }

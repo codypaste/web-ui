@@ -6,4 +6,5 @@ export class GroupPostResponseModel {
   title: string;
   __v: number;
   _id: string;
+  isEncrypted: boolean;
 }

@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { Subscription, Observable } from 'rxjs';
 
 import { EditorModel } from 'src/app/_models/EditorModel';
-import * as fromActions from 'src/app/_store/actions';
+import * as fromActions from 'src/app/_store/newProjectActions';
 
 declare var CodeMirror: any;
 

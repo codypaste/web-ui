@@ -12,7 +12,8 @@ export class ViewEditorDirective {
     CodeMirror.modeURL = 'cm-%N.js';
 
     this.editor = new CodeMirror.fromTextArea(el.nativeElement, {
-      lineNumbers: true
+      lineNumbers: true,
+      readOnly: true,
     });
 
     setTimeout(() => {

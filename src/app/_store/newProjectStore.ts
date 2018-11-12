@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { EditorModel } from 'src/app/_models/EditorModel';
-import * as fromActions from './actions';
+import * as fromActions from './newProjectActions';
 import * as uuid from 'uuid/v4';
 
 export interface NewProjectState {

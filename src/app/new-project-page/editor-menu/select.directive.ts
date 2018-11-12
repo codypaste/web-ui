@@ -3,7 +3,7 @@ import { Store, select } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
 import { NewProjectState, getActiveEditorSyntax } from 'src/app/_store/newProjectStore';
-import * as fromActions from 'src/app/_store/actions';
+import * as fromActions from 'src/app/_store/newProjectActions';
 
 declare var $: any;
 @Directive({

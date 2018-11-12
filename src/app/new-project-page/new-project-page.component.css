@@ -1,49 +1,68 @@
-.grid-container {
+.new-project-container {
   display: grid;
-  height: 100%;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: max-content max-content 1fr 1fr max-content max-content;
-  grid-gap: 0px 0px;
-  grid-template-areas: "Menu Tabs Tabs Tabs Tabs Tabs Tabs""Menu EditorMenu EditorMenu EditorMenu EditorMenu EditorMenu EditorMenu""Menu Editor Editor Editor Editor Editor Editor""Menu Editor Editor Editor Editor Editor Editor""Menu Editor Editor Editor Editor Editor Editor""Footer Footer Footer Footer Footer Footer Footer";
-}
-
-.Footer {
-  grid-area: Footer;
-  align-self: end;
-  padding: 1rem;
-  background-color: #303F9F;
-  color: #C5CAE9;
+  grid-template-rows: max-content max-content max-content 1fr 1fr 1fr max-content;
+  height: 100%;
+  width: 100%;
 }
 
 .Menu {
-  grid-area: Menu;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 7;
+
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   border-right: 1px solid #eee;
+  padding-right: 0.5rem;
+}
+
+.Footer {
+  grid-column-start: 1;
+  grid-column-end: 8;
+  grid-row-start: 7;
+  grid-row-end: 8;
+
+  background-color: #303F9F;
+  color: #C5CAE9;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .Tabs {
-  margin-top: 1rem;
-  grid-area: Tabs;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  grid-column-start: 2;
+  grid-column-end: 8;
+  grid-row-start: 2;
+  grid-row-end: 3;
+
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .EditorMenu {
-  margin-top: 1rem;
-  grid-area: EditorMenu;
-  padding-left: 1rem;
-  padding-right: 1rem;
-
+  grid-column-start: 2;
+  grid-column-end: 8;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .Editor {
-  grid-area: Editor;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  margin-bottom: 1rem;
+  grid-column-start: 2;
+  grid-column-end: 8;
+  grid-row-start: 4;
+  grid-row-end: 7;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .ui.menu .item > .label {

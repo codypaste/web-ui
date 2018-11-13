@@ -24,9 +24,13 @@ export class ApiService {
     return this.http.post<SnippetResponseModel>(environment.snippetsEndpoint, payload).toPromise();
   }
 
-  retrieveProject(id: string): Promise<ProjectViewModel> {
-    return this.http.post<ProjectViewModel>(environment.retrieveProjectEndpoint, {
+  retrieveProject(id: string, password: string): Promise<ProjectViewModel> {
+    const payload = password.length > 0 ? {
+      groupId: id,
+      password
+    } : {
       groupId: id
-    }).toPromise();
+    };
+    return this.http.post<ProjectViewModel>(environment.retrieveProjectEndpoint, payload).toPromise();
   }
 }

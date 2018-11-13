@@ -55,3 +55,17 @@
   margin-bottom: 0.5rem;
   margin-right: 0.5rem;
 }
+
+.PageLoader {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 5;
+  grid-row-end: 6;
+}
+
+.PasswordForm {
+  grid-column-start: 3;
+  grid-column-end: 6;
+  grid-row-start: 5;
+  grid-row-end: 6;
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-new-project-page',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewProjectPageComponent implements OnInit {
 
-  constructor() {}
+  constructor(
+    private _titleService: Title
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this._titleService.setTitle('Create new project | CODYPASTE');
+  }
 }

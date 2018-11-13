@@ -1,4 +1,42 @@
-<div class="view-page-container">
+<div *ngIf="!dataLoaded && !requiresPassword" class="view-page-container">
+  <div class="Footer">
+    <app-footer></app-footer>
+  </div>
+  <div class="PageLoader">
+    <div class="ui segment w-100 h-100">
+      <div class="ui active dimmer">
+        <div class="ui massive text loader">Loading</div>
+      </div>
+      <p></p>
+      <p></p>
+      <p></p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="requiresPassword" class="view-page-container">
+  <div class="Footer">
+    <app-footer></app-footer>
+  </div>
+  <div class="PasswordForm">
+    <div class="ui attached message">
+      <div class="header">
+        This project is protected with password
+      </div>
+    </div>
+    <form (ngSubmit)="onSubmit()" class="ui form attached fluid segment">
+      <div class="fields w-100">
+        <div class="field w-100">
+          <label>Password</label>
+          <input [(ngModel)]="password" name="password" placeholder="Password" type="password">
+        </div>
+      </div>
+      <div (click)="onSubmit()" class="ui blue submit button w-100">Submit</div>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="dataLoaded" class="view-page-container">
   <div class="Footer">
     <app-footer></app-footer>
   </div>
@@ -9,7 +47,7 @@
     <app-view-editor></app-view-editor>
   </div>
   <div class="Menu">
-      <app-project-info></app-project-info>
-      <app-share></app-share>
+    <app-project-info></app-project-info>
+    <app-share></app-share>
   </div>
 </div>

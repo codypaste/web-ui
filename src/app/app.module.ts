@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { ClipboardModule } from 'ngx-clipboard';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -24,6 +24,7 @@ import { ShareComponent } from 'src/app/view-page/share/share.component';
 import { ViewEditorComponent } from 'src/app/view-page/view-editor/view-editor.component';
 import { ViewEditorDirective } from 'src/app/view-page/view-editor/view-editor.directive';
 import { ViewPageComponent } from 'src/app/view-page/view-page.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ViewPageComponent } from 'src/app/view-page/view-page.component';
     ProjectInfoComponent,
     ShareComponent,
     ViewEditorComponent,
-    ViewEditorDirective
+    ViewEditorDirective,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,7 @@ import { ViewPageComponent } from 'src/app/view-page/view-page.component';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     ClipboardModule
   ],
-  providers: [],
+  providers: [Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

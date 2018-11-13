@@ -20,7 +20,7 @@
             Expiration
           </div>
           <div class="summary">
-            Never
+            {{ group.expirationDatetime ? normalizeDate(group.expirationDatetime) : 'Never' }}
           </div>
         </div>
       </div>

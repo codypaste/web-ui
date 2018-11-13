@@ -29,6 +29,7 @@
     "core-js": "^2.5.7",
     "jquery": "^3.3.1",
     "moment": "^2.22.2",
+    "ngx-clipboard": "^11.1.9",
     "rxjs": "~6.3.3",
     "semantic-ui": "^2.4.2",
     "toastr": "^2.1.4",

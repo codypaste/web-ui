@@ -4,8 +4,8 @@
   </div>
   <div class="content">
     <div class="ui action input w-100">
-      <input type="text" value="https://codypaste.io/view/xd?key=abc" disabled="">
-      <button class="ui icon button">
+      <input type="text" value={{viewUrl}} disabled="">
+      <button (click)="copyLink()" class="ui icon button">
         <i class="copy icon"></i>
       </button>
     </div>

@@ -38,7 +38,8 @@ export function reducer(state = initialState, action: fromActions.ALL_ACTIONS): 
       return {
         ...state,
         editors: action.payload,
-        activeEditorId: action.payload[0].id
+        activeEditorId: action.payload[0].id,
+        activeEditor: action.payload[0]
       };
     }
 
@@ -62,4 +63,9 @@ export const getActiveEditorId = createSelector(
 export const getGroup = createSelector(
   getViewState,
   (state: ViewState) => state.group
+);
+
+export const getActiveEditor = createSelector(
+  getViewState,
+  (state: ViewState) => state.activeEditor
 );

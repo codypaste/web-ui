@@ -25,3 +25,7 @@ color: #B71C1C;
 .share-box {
   margin-top: 0.5rem !important;
 }
+
+.w-100 {
+  width: 100% !important;
+}

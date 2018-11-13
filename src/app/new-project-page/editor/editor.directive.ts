@@ -2,7 +2,7 @@ import { Directive, ElementRef, OnDestroy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
-import { NewProjectState, getEditors, getActiveEditor } from 'src/app/_store/newProjectStore';
+import { NewProjectState, getActiveEditor } from 'src/app/_store/newProjectStore';
 import * as fromAction from 'src/app/_store/newProjectActions';
 import { EditorModel } from 'src/app/_models/EditorModel';
 
@@ -13,9 +13,7 @@ declare var CodeMirror: any;
 })
 export class EditorDirective implements OnDestroy {
   editor: any;
-  editors$: Observable<EditorModel[]>;
   activeEditor$: Observable<EditorModel>;
-
   editorContent: Subscription;
 
   constructor(el: ElementRef,
@@ -26,7 +24,6 @@ export class EditorDirective implements OnDestroy {
       lineNumbers: true
     });
 
-    this.editors$ = store.pipe(select(getEditors));
     this.activeEditor$ = store.pipe(select(getActiveEditor));
 
     this.editorContent = this.activeEditor$.subscribe(editor => {

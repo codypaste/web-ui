@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ViewState, getGroup } from 'src/app/_store/viewStore';
 import { Store, select } from '@ngrx/store';
-import { GroupModel } from 'src/app/_models/GroupModel';
 import { Observable, Subscription } from 'rxjs';
+import * as moment from 'moment';
+import { ViewState, getGroup } from 'src/app/_store/viewStore';
+import { GroupModel } from 'src/app/_models/GroupModel';
 
 @Component({
   selector: 'app-project-info',
@@ -30,6 +31,10 @@ export class ProjectInfoComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.groupSub.unsubscribe();
+  }
+
+  normalizeDate(date) {
+    return moment(date).format('YYYY-MM-DD HH:mm');
   }
 
 }

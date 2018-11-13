@@ -21,7 +21,6 @@ export class ShareComponent implements OnInit {
   }
 
   copyLink() {
-    console.log('copy');
     this._clipboardService.copyFromContent(this.viewUrl);
     this._toastr.success('Link copied to your clipboard!');
   }

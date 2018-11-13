@@ -145,7 +145,6 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
       this.router.navigate(['/view', res._id], qp);
     } catch (e) {
       this.toastr.error('Something went wrong. Try again');
-      console.log(e);
       this.isSubmitted = false;
       return;
     }

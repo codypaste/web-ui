@@ -27,6 +27,7 @@ export class EditorDirective implements OnDestroy {
     this.activeEditor$ = store.pipe(select(getActiveEditor));
 
     this.editorContent = this.activeEditor$.subscribe(editor => {
+      console.log(editor.content);
       this.editor.setValue(editor.content || '');
       const currentMode = this.editor.getOption('mode');
       let newMode = editor.syntax;

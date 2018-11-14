@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
-import { GroupModel } from '../_models/GroupModel';
-import { EditorModel } from '../_models/EditorModel';
+import { GroupModel } from 'src/app/_models/GroupModel';
+import { EditorModel } from 'src/app/_models/EditorModel';
 
 export const SWITCH_ACTIVE_VIEW_EDITOR = 'SWITCH_ACTIVE_VIEW_EDITOR';
 export const SET_GROUP_FROM_API = 'SET_GROUP_FROM_API';

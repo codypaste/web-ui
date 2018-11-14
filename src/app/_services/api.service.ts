@@ -4,8 +4,8 @@ import { environment } from 'src/environments/environment';
 import { GroupModel } from 'src/app/_models/GroupModel';
 import { GroupPostResponseModel } from 'src/app/_models/GroupPostResponseModel';
 import { SnippetModel } from 'src/app/_models/SnippetModel';
-import { SnippetResponseModel } from '../_models/SnippetResponseModel';
-import { ProjectViewModel } from '../_models/ProjectViewModel';
+import { SnippetResponseModel } from 'src/app/_models/SnippetResponseModel';
+import { ProjectViewModel } from 'src/app/_models/ProjectViewModel';
 
 @Injectable({
   providedIn: 'root'

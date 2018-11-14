@@ -10,7 +10,6 @@ import { ViewState } from 'src/app/_store/viewStore';
 import * as fromActions from 'src/app/_store/viewStoreActions';
 import { GroupModel } from 'src/app/_models/GroupModel';
 import { EditorModel } from 'src/app/_models/EditorModel';
-import { ProjectViewModel } from '../_models/ProjectViewModel';
 
 @Component({
   selector: 'app-view-page',

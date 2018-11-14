@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { EditorModel } from 'src/app/_models/EditorModel';
 import * as fromActions from './viewStoreActions';
-import { GroupModel } from '../_models/GroupModel';
+import { GroupModel } from 'src/app/_models/GroupModel';
 
 export interface ViewState {
   activeEditorId: string;

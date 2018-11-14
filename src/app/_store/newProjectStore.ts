@@ -20,13 +20,16 @@ const getInitialEditor = () => {
 };
 
 const initialEditor = getInitialEditor();
-
-const initialState: NewProjectState = {
-  activeEditorId: initialEditor.id,
-  editors: [initialEditor],
-  numberOfOpenedEditors: 1,
-  activeEditor: initialEditor,
+const getInitalState = () => {
+  return {
+    activeEditorId: initialEditor.id,
+    editors: [initialEditor],
+    numberOfOpenedEditors: 1,
+    activeEditor: initialEditor,
+  };
 };
+
+const initialState = getInitalState();
 
 export function reducer(state = initialState, action: fromActions.ALL_ACTIONS): NewProjectState {
   switch (action.type) {
@@ -114,6 +117,11 @@ export function reducer(state = initialState, action: fromActions.ALL_ACTIONS): 
         activeEditor: {...editor},
       };
     }
+
+    case fromActions.RESET_STATE: {
+      return getInitalState();
+    }
+
     default:
       return state;
   }

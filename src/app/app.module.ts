@@ -25,6 +25,8 @@ import { ViewEditorComponent } from 'src/app/view-page/view-editor/view-editor.c
 import { ViewEditorDirective } from 'src/app/view-page/view-editor/view-editor.directive';
 import { ViewPageComponent } from 'src/app/view-page/view-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AutofocusDirective } from './autofocus.directive';
+import { EncryptionErrorPageComponent } from './encryption-error-page/encryption-error-page.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ShareComponent,
     ViewEditorComponent,
     ViewEditorDirective,
-    NotFoundComponent
+    NotFoundComponent,
+    AutofocusDirective,
+    EncryptionErrorPageComponent
   ],
   imports: [
     BrowserModule,

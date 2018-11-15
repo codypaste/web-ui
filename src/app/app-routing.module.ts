@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { NewProjectPageComponent } from './new-project-page/new-project-page.component';
 import { ViewPageComponent } from './view-page/view-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { EncryptionErrorPageComponent } from './encryption-error-page/encryption-error-page.component';
 
 const routes: Routes = [
   { path: 'new', component: NewProjectPageComponent },
   { path: 'view/:id', component: ViewPageComponent},
   { path: 'not-found', component: NotFoundComponent },
+  { path: 'encryption-error', component: EncryptionErrorPageComponent },
   { path: '', redirectTo: '/new', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 

@@ -10,6 +10,7 @@ import { ViewState } from 'src/app/_store/viewStore';
 import * as fromActions from 'src/app/_store/viewStoreActions';
 import { GroupModel } from 'src/app/_models/GroupModel';
 import { EditorModel } from 'src/app/_models/EditorModel';
+import { ErrorTypes } from '../_utils/errors';
 
 @Component({
   selector: 'app-view-page',
@@ -21,6 +22,7 @@ export class ViewPageComponent implements OnInit {
   dataLoaded = false;
   requiresPassword = false;
   password = '';
+  passwordTries = 0;
 
   constructor(
     private _api: ApiService,
@@ -31,7 +33,7 @@ export class ViewPageComponent implements OnInit {
     private _router: Router,
   ) { }
 
-  async setView(project) {
+  setView(project) {
     const key = this.route.snapshot.queryParams.key;
     const isEncrypted = project.group.isEncrypted;
 
@@ -72,16 +74,26 @@ export class ViewPageComponent implements OnInit {
         this.requiresPassword = true;
         return;
       }
+
+      if (e.type === ErrorTypes.ENCRYPTION_ERROR) {
+        this._router.navigateByUrl('/encryption-error', { skipLocationChange: true });
+        return;
+      }
+
       this._router.navigateByUrl('/not-found', { skipLocationChange: true });
     }
   }
 
   async ngOnInit() {
+    this.passwordTries = 0;
+    this.password = '';
     await this.retrieveProject('');
   }
 
   async onSubmit() {
     await this.retrieveProject(this.password);
+    this.passwordTries += 1;
+    this.password = '';
   }
 
 }

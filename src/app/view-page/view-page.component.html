@@ -28,10 +28,16 @@
       <div class="fields w-100">
         <div class="field w-100">
           <label>Password</label>
-          <input [(ngModel)]="password" name="password" placeholder="Password" type="password">
+          <input appAutofocus [(ngModel)]="password" name="password" placeholder="Password" type="password">
         </div>
       </div>
       <div (click)="onSubmit()" class="ui blue submit button w-100">Submit</div>
+      <div *ngIf="passwordTries > 0" class="ui negative message">
+        <div class="header">
+          Invalid password
+        </div>
+        <p>Sorry, but this password didn't work.</p>
+      </div>
     </form>
   </div>
 </div>

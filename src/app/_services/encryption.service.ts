@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as uuid from 'uuid/v4';
 import * as aesjs from 'aes-js';
+import { EncryptionError } from '../_utils/errors';
 
 export class EncryptionKey {
   key: number[];
@@ -33,13 +34,17 @@ export class EncryptionService {
   }
 
   decrypt(encrypted: string, key: string): string {
-    const encryptedBytes = aesjs.utils.hex.toBytes(encrypted);
+    try {
+      const encryptedBytes = aesjs.utils.hex.toBytes(encrypted);
 
-    const k = key.split('').map(char => char.charCodeAt(0));
-    const aesCtr = new aesjs.ModeOfOperation.ctr(k, new aesjs.Counter(5));
-    const decryptedBytes = aesCtr.decrypt(encryptedBytes);
+      const k = key.split('').map(char => char.charCodeAt(0));
+      const aesCtr = new aesjs.ModeOfOperation.ctr(k, new aesjs.Counter(5));
+      const decryptedBytes = aesCtr.decrypt(encryptedBytes);
 
-    const decryptedText = aesjs.utils.utf8.fromBytes(decryptedBytes);
-    return decryptedText;
+      const decryptedText = aesjs.utils.utf8.fromBytes(decryptedBytes);
+      return decryptedText;
+    } catch (e) {
+      throw new EncryptionError();
+    }
   }
 }

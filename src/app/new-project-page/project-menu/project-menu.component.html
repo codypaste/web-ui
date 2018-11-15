@@ -37,13 +37,6 @@
     <input type="password" placeholder="Password" formControlName="password">
   </div>
 
-  <div class="field">
-    <div class="ui checkbox">
-      <input type="checkbox" formControlName="encryption">
-      <label>Encryption</label>
-    </div>
-  </div>
-
   <button type="submit" [disabled]="!projectMenuForm.valid || isSubmitted" class="ui primary basic button">
     <i class="share alternate icon"></i>
     Share

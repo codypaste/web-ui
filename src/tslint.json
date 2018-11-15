@@ -15,6 +15,7 @@
         ],
         "no-unused-expression": true,
         "no-unused-variable": true,
-        "no-consecutive-blank-lines": true
+        "no-consecutive-blank-lines": true,
+        "no-console": [true, "log", "warn"]
     }
 }

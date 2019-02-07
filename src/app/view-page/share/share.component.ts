@@ -32,7 +32,7 @@ export class ShareComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     const key = this.route.snapshot.queryParams.key;
   
-    this._toastr.info('Opened project editor', {positionClass: "toast-top-right",});    
+    this._toastr.info('Opened project editor');    
     
     this.router.navigate(['/edit', id], {
       queryParams: {

@@ -1,43 +1,51 @@
 <form [formGroup]="projectMenuForm" (ngSubmit)="onSubmit()" class="ui form">
-  <div class="field">
-    <label>Project title</label>
-    <input type="text" placeholder={{group.title}} formControlName="title">
+  <div class="ui card share-box">
+    <div class="content">
+      <div class="header">Project menu</div>
+    </div>
+    <div class="content">
+      <div class="field">
+        <label>Project name</label>
+        <input type="text" placeholder={{group.title}} formControlName="title">
+      </div>
+    </div>
+    <div class="content">
+      <div class="field">
+        <label>Expiration</label>
+        <select class="ui fluid dropdown" formControlName="expiration">
+          <option value="-1">Never</option>
+          <option value="PT5M">5 minutes</option>
+          <option value="PT15M">15 minutes</option>
+          <option value="PT30M">30 minutes</option>
+          <option value="PT1H">1 hour</option>
+          <option value="PT12H">12 hour</option>
+          <option value="P1D">1 day</option>
+          <option value="P7D">1 week</option>
+          <option value="P14D">2 weeks</option>
+          <option value="P1M">1 month</option>
+          <option value="P6M">6 months</option>
+          <option value="P1Y">1 year</option>
+        </select>
+      </div>
+    </div>
+    <div class="content">
+      <div class="field">
+        <label>Visibility</label>
+        <select id="visibilitySelector" class="ui fluid dropdown" formControlName="visibility">
+          <option value="public">Public - available to anyone</option>
+          <option value="private">Private - password will be required</option>
+        </select>
+        <div *ngIf="!isPublic" class="field" [ngClass]="{
+          'error': !projectMenuForm.controls.password.valid
+        }">
+          <label>Password</label>
+          <input type="password" placeholder="Password" formControlName="password">
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <label>Expiration</label>
-    <select class="ui fluid dropdown" formControlName="expiration">
-      <option value="-1">Never</option>
-      <option value="PT5M">5 minutes</option>
-      <option value="PT15M">15 minutes</option>
-      <option value="PT30M">30 minutes</option>
-      <option value="PT1H">1 hour</option>
-      <option value="PT12H">12 hour</option>
-      <option value="P1D">1 day</option>
-      <option value="P7D">1 week</option>
-      <option value="P14D">2 weeks</option>
-      <option value="P1M">1 month</option>
-      <option value="P6M">6 months</option>
-      <option value="P1Y">1 year</option>
-    </select>
-  </div>
-
-  <div class="field">
-    <label>Visibility</label>
-    <select id="visibilitySelector" class="ui fluid dropdown" formControlName="visibility">
-      <option value="public">Public - everyone can access it</option>
-      <option value="private">Private - only those with password can access it</option>
-    </select>
-  </div>
-
-  <div *ngIf="!isPublic" class="field" [ngClass]="{
-    'error': !projectMenuForm.controls.password.valid
-  }">
-    <label>Password</label>
-    <input type="password" placeholder="Password" formControlName="password">
-  </div>
-
-  <button type="submit" [disabled]="!projectMenuForm.valid || isSubmitted" class="ui primary basic button">
+  <button type="submit" [disabled]="!projectMenuForm.valid || isSubmitted" class="ui fluid primary basic button">
     <i class="share alternate icon"></i>
     Share
   </button>

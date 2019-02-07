@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/_services/api.service';
 import { EditorModel } from 'src/app/_models/EditorModel';
 import { EncryptionService } from 'src/app/_services/encryption.service';
 import { GroupModel } from 'src/app/_models/GroupModel';
-import { NewProjectState, getEditors } from 'src/app/_store/newProjectStore';
+import { NewProjectState, getEditors , getSnippetsGroup } from 'src/app/_store/newProjectStore';
 import { SnippetModel } from 'src/app/_models/SnippetModel';
 import { ToastrService } from 'src/app/_services/toastr.service';
 import { Router } from '@angular/router';
@@ -34,6 +34,9 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
   });
 
   editors$: Observable<EditorModel[]>;
+  snippetsGroup$: Observable<GroupModel>;
+  groupSub: Subscription;
+  group: GroupModel;
   editorsSub: Subscription;
   editors: EditorModel[];
 
@@ -44,6 +47,9 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
     private toastr: ToastrService,
     private router: Router,
   ) {
+    this.snippetsGroup$ = this.store.pipe(select(getSnippetsGroup));
+    this.groupSub = this.snippetsGroup$.subscribe(res => this.group = res);
+    
     this.editors$ = this.store.pipe(select(getEditors));
     this.editorsSub = this.editors$.subscribe(res => this.editors = res);
   }
@@ -96,7 +102,7 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
 
     const isPublic = this.projectMenuForm.get('visibility').value === 'public' ? true : false;
     const group = new GroupModel();
-    group.title = this.projectMenuForm.get('title').value || 'unnamed';
+    group.title = this.projectMenuForm.get('title').value || this.group.title;
     group.isPublic = isPublic;
     group.expirationDatetime = expirationDatetime;
     group.title = this.encryption.encrypt(group.title, encryptionKey.key);

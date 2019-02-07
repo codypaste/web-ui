@@ -1,7 +1,7 @@
 <form [formGroup]="projectMenuForm" (ngSubmit)="onSubmit()" class="ui form">
   <div class="field">
     <label>Project title</label>
-    <input type="text" placeholder="unnamed" formControlName="title">
+    <input type="text" placeholder={{group.title}} formControlName="title">
   </div>
 
   <div class="field">

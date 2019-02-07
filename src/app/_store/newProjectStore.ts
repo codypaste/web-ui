@@ -1,27 +1,38 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { EditorModel } from 'src/app/_models/EditorModel';
+import { GroupModel } from 'src/app/_models/GroupModel';
 import * as fromActions from './newProjectActions';
 import * as uuid from 'uuid/v4';
 
 export interface NewProjectState {
+  snippetsGroup: GroupModel,
   activeEditorId: string;
   editors: EditorModel[];
   numberOfOpenedEditors: number;
   activeEditor: EditorModel;
 }
 
-const getInitialEditor = () => {
+const setDefaultSnippetName = editorIndex => `Snippet_${editorIndex}`;
+
+const getInitialEditor = (editorIndex) => {
   const x = new EditorModel();
   x.id = uuid();
-  x.title = 'unnamed';
+  x.title = setDefaultSnippetName(editorIndex);
   x.syntax = 'Plain Text';
   x.content = '';
   return x;
 };
 
-const initialEditor = getInitialEditor();
+const defaultSnippetsGroup = () => {
+  const g = new GroupModel();
+  g.title = 'Unnamed project';
+  return g;
+}
+
+const initialEditor = getInitialEditor(1);
 const getInitalState = () => {
   return {
+    snippetsGroup: defaultSnippetsGroup(),
     activeEditorId: initialEditor.id,
     editors: [initialEditor],
     numberOfOpenedEditors: 1,
@@ -34,13 +45,14 @@ const initialState = getInitalState();
 export function reducer(state = initialState, action: fromActions.ALL_ACTIONS): NewProjectState {
   switch (action.type) {
     case fromActions.ADD_EDITOR: {
-      const newEditor = getInitialEditor();
+      const numOfOpenedEditors = state.numberOfOpenedEditors + 1;
+      const newEditor = getInitialEditor(numOfOpenedEditors);
       const newState = {
         ...state,
         editors: [...state.editors, newEditor],
         activeEditorId: newEditor.id,
         activeEditor: newEditor,
-        numberOfOpenedEditors: state.numberOfOpenedEditors + 1
+        numberOfOpenedEditors: numOfOpenedEditors
       };
       return newState;
     }
@@ -118,6 +130,25 @@ export function reducer(state = initialState, action: fromActions.ALL_ACTIONS): 
       };
     }
 
+    case fromActions.SET_EDITORS_FOR_PROJECT_TO_EDIT: {
+      const projectEditors = action.payload;
+
+      return {
+        ...state,
+        editors: projectEditors,
+        activeEditorId: projectEditors[0].id,
+        numberOfOpenedEditors: projectEditors.length
+      };
+    }
+
+    case fromActions.SET_GROUP_TO_EDIT: {
+      const snippetsGroup = action.payload;
+      return {
+        ...state,
+        snippetsGroup
+      }      
+    }
+
     case fromActions.RESET_STATE: {
       return getInitalState();
     }
@@ -152,4 +183,9 @@ export const getNumberOfOpenedEditors = createSelector(
 export const getActiveEditorSyntax = createSelector(
   getNewProjectState,
   (state: NewProjectState) => state.activeEditor.syntax
+);
+
+export const getSnippetsGroup = createSelector(
+  getNewProjectState,
+  (state: NewProjectState) => state.snippetsGroup
 );

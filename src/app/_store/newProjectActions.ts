@@ -11,6 +11,8 @@ export const SET_SYNTAX_FOR_ACTIVE_EDITOR = 'SET_SYNTAX_FOR_ACTIVE_EDITOR';
 export const SET_GROUP_FROM_API = 'SET_GROUP_FROM_API';
 export const SET_EDITORS_FROM_API = 'SET_EDITORS_FROM_API';
 export const RESET_STATE = 'RESET_STATE';
+export const SET_GROUP_TO_EDIT = 'SET_GROUP_TO_EDIT';
+export const SET_EDITORS_FOR_PROJECT_TO_EDIT = 'SET_EDITORS_FOR_PROJECT_TO_EDIT';
 
 export class AddEditorAction implements Action {
   readonly type = ADD_EDITOR;
@@ -46,14 +48,14 @@ export class SetSyntaxForActiveEditorAction implements Action {
   constructor(public payload: string) {}
 }
 
-export class SetGroupFromAPI implements Action {
-  readonly type = SET_GROUP_FROM_API;
+export class SetGroupToEdit implements Action {
+  readonly type = SET_GROUP_TO_EDIT;
 
   constructor(public payload: GroupModel) {}
 }
 
-export class SetEditorsFromAPI implements Action {
-  readonly type = SET_EDITORS_FROM_API;
+export class SetEditorsForProjectToEdit implements Action {
+  readonly type = SET_EDITORS_FOR_PROJECT_TO_EDIT;
 
   constructor(public payload: EditorModel[]) {}
 }
@@ -71,6 +73,6 @@ export type ALL_ACTIONS =
   SetContentForActiveEditorAction |
   SetTitleForActiveEditorAction |
   SetSyntaxForActiveEditorAction |
-  SetGroupFromAPI |
-  SetEditorsFromAPI |
-  ResetState;
+  ResetState | 
+  SetGroupToEdit |
+  SetEditorsForProjectToEdit;

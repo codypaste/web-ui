@@ -27,6 +27,7 @@ import { ViewPageComponent } from 'src/app/view-page/view-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AutofocusDirective } from './autofocus.directive';
 import { EncryptionErrorPageComponent } from './encryption-error-page/encryption-error-page.component';
+import { EditPageComponent } from './edit-page/edit-page.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { EncryptionErrorPageComponent } from './encryption-error-page/encryption
     ViewEditorDirective,
     NotFoundComponent,
     AutofocusDirective,
-    EncryptionErrorPageComponent
+    EncryptionErrorPageComponent,
+    EditPageComponent
   ],
   imports: [
     BrowserModule,

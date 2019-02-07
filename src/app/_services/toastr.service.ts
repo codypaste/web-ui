@@ -38,4 +38,9 @@ export class ToastrService {
     this.setOptions(options);
     toastr['success'](message);
   }
+
+  info(message: string, options?) {
+    this.setOptions(options);
+    toastr['info'](message);
+  }
 }

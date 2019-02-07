@@ -1,4 +1,7 @@
 <div *ngIf="!dataLoaded && !requiresPassword" class="view-page-container">
+  <div class="Header">  
+    <app-header></app-header>
+  </div>
   <div class="Footer">
     <app-footer></app-footer>
   </div>
@@ -15,6 +18,9 @@
 </div>
 
 <div *ngIf="requiresPassword" class="view-page-container">
+  <div class="Header">  
+    <app-header></app-header>
+  </div>
   <div class="Footer">
     <app-footer></app-footer>
   </div>
@@ -43,6 +49,9 @@
 </div>
 
 <div *ngIf="dataLoaded" class="view-page-container">
+  <div class="Header">  
+    <app-header></app-header>
+  </div>
   <div class="Footer">
     <app-footer></app-footer>
   </div>

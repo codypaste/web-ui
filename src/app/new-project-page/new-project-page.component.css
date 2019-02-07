@@ -9,14 +9,36 @@
 .Menu {
   grid-column-start: 1;
   grid-column-end: 2;
-  grid-row-start: 1;
+  grid-row-start: 2;
   grid-row-end: 7;
 
   margin-left: 0.5rem;
-  margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   border-right: 1px solid #eee;
   padding-right: 0.5rem;
+}
+
+.Header {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+
+  background-color: #ffffff;
+  color: #262626;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 0.5rem;
+}
+
+.Header:after {
+  content: ""; 
+  display: block; 
+  margin: 0 auto; 
+  width: 250%; 
+  padding-top: 1em;
+  border-bottom: 1px solid black;
 }
 
 .Footer {

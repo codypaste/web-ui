@@ -28,6 +28,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { AutofocusDirective } from './autofocus.directive';
 import { EncryptionErrorPageComponent } from './encryption-error-page/encryption-error-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { EditPageComponent } from './edit-page/edit-page.component';
     NotFoundComponent,
     AutofocusDirective,
     EncryptionErrorPageComponent,
-    EditPageComponent
+    EditPageComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

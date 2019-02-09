@@ -18,6 +18,19 @@
   padding-right: 0.5rem;
 }
 
+.SharedProjects {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 5;
+  grid-row-end: 7;
+
+  margin-top: 2rem;
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-right: 1px solid #eee;
+  padding-right: 0.5rem;
+}
+
 .Header {
   grid-column-start: 1;
   grid-column-end: 2;

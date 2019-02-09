@@ -13,6 +13,10 @@ import { NewProjectState, getEditors , getSnippetsGroup } from 'src/app/_store/n
 import { SnippetModel } from 'src/app/_models/SnippetModel';
 import { ToastrService } from 'src/app/_services/toastr.service';
 import { Router } from '@angular/router';
+import { SharedProjectsState } from 'src/app/_store/sharedProjectsStore';
+import { GroupPostResponseModel } from 'src/app/_models/GroupPostResponseModel';
+import { LocalStorageProjectModel } from 'src/app/_models/LocalStorageProjectModel';
+import * as fromStorageStoreActions from 'src/app/_store/sharedProjectsStoreActions'
 
 @Component({
   selector: 'app-project-menu',
@@ -42,15 +46,16 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
 
   constructor(
     private api: ApiService,
-    private store: Store<NewProjectState>,
+    private newProjectStore: Store<NewProjectState>,
+    private sharedProjectsStore: Store<SharedProjectsState>,
     private encryption: EncryptionService,
     private toastr: ToastrService,
     private router: Router,
   ) {
-    this.snippetsGroup$ = this.store.pipe(select(getSnippetsGroup));
+    this.snippetsGroup$ = this.newProjectStore.pipe(select(getSnippetsGroup));
     this.groupSub = this.snippetsGroup$.subscribe(res => this.group = res);
     
-    this.editors$ = this.store.pipe(select(getEditors));
+    this.editors$ = this.newProjectStore.pipe(select(getEditors));
     this.editorsSub = this.editors$.subscribe(res => this.editors = res);
   }
 
@@ -73,6 +78,16 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.visibilitySub.unsubscribe();
     this.editorsSub.unsubscribe();
+  }
+
+  saveSharedProjectInStorage(sharedGroup: GroupPostResponseModel, encryptionKey: string) {
+    const {createdAt, title, _id, isEncrypted} = sharedGroup;
+    const decryptedTitle = isEncrypted ? this.encryption.decrypt(title, encryptionKey) : title;
+    const project = new LocalStorageProjectModel(_id, decryptedTitle, createdAt, encryptionKey)
+    
+    this.sharedProjectsStore.dispatch(
+      new fromStorageStoreActions.addSharedProjectToLocalStorage(project)
+    );
   }
 
   async onSubmit() {
@@ -114,6 +129,8 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
 
     try {
       const res = await this.api.createGroup(group);
+      this.saveSharedProjectInStorage(res, encryptionKey.normalized)
+
       const snippetsRequests = [];
       this.editors.forEach(editor => {
         const snippet = new SnippetModel();

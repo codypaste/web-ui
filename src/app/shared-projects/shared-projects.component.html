@@ -1,0 +1,21 @@
+<div *ngIf="(sharedProjectsAmount$ | async) > 0" class="ui card share-box">
+  <div class="content">
+    <div class="header">Your shared projects</div>
+  </div>
+  <div class="content">
+    <div class="ui relaxed divided list" *ngFor="let sharedProject of sharedProjects$ | async | reverse; index as i">
+      <div class="item">
+        <div class="right floated content">
+          <div class="ui small red icon basic button">
+              <i (click)="onRemoveProject(sharedProject.projectId)" class="trash alternate outline icon"></i>
+          </div>
+        </div>
+        <i class="large file code outline middle aligned icon"></i>
+        <div class="content" (click)="onViewRedirect(sharedProject.projectId, sharedProject.key)">
+          <a class="header">{{sharedProject.projectTitle}}</a>
+          <div class="description">{{sharedProject.projectCreationDate | timeElapsed}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

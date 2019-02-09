@@ -1,16 +1,19 @@
 import { ActionReducerMap, ActionReducer, MetaReducer } from '@ngrx/store';
 import * as fromNewProject from './newProjectStore';
 import * as fromViewStore from './viewStore';
+import * as fromSharedProjectsState from './sharedProjectsStore';
 import { environment } from 'src/environments/environment';
 
 export interface AppState {
   newProjectState: fromNewProject.NewProjectState;
   viewState: fromViewStore.ViewState;
+  sharedProjectsState: fromSharedProjectsState.SharedProjectsState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
   newProjectState: fromNewProject.reducer,
-  viewState: fromViewStore.reducer
+  viewState: fromViewStore.reducer,
+  sharedProjectsState: fromSharedProjectsState.reducer
 };
 
 export function logger(reducer: ActionReducer<AppState>): ActionReducer<AppState> {

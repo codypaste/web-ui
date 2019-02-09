@@ -28,7 +28,7 @@
     "codemirror": "^5.41.0",
     "core-js": "^2.5.7",
     "jquery": "^3.3.1",
-    "moment": "^2.22.2",
+    "moment": "^2.24.0",
     "ngx-clipboard": "^11.1.9",
     "rxjs": "~6.3.3",
     "semantic-ui": "^2.4.2",

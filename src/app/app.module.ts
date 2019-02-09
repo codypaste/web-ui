@@ -29,6 +29,9 @@ import { AutofocusDirective } from './autofocus.directive';
 import { EncryptionErrorPageComponent } from './encryption-error-page/encryption-error-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { HeaderComponent } from './header/header.component';
+import { SharedProjectsComponent } from './shared-projects/shared-projects.component';
+import { TimeElapsedPipe } from './shared-projects/time-elapsed.pipe'
+import { ReversePipe } from './shared-projects/reverse-local-storage.pipe'
 
 @NgModule({
   declarations: [
@@ -51,7 +54,10 @@ import { HeaderComponent } from './header/header.component';
     AutofocusDirective,
     EncryptionErrorPageComponent,
     EditPageComponent,
-    HeaderComponent
+    HeaderComponent,
+    SharedProjectsComponent,
+    TimeElapsedPipe,
+    ReversePipe
   ],
   imports: [
     BrowserModule,
@@ -63,7 +69,9 @@ import { HeaderComponent } from './header/header.component';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     ClipboardModule
   ],
-  providers: [Title],
+  providers: [
+    Title,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

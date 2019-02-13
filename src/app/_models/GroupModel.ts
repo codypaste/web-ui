@@ -1,5 +1,5 @@
 export class GroupModel {
-  _id: string;
+  id: string;
   title: string;
   isPublic: boolean;
   expirationDatetime: string;

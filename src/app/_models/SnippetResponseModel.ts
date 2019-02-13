@@ -6,5 +6,5 @@ export class SnippetResponseModel {
   snippetName: string;
   syntax: string;
   __v: number;
-  _id: string;
+  id: string;
 }

@@ -19,9 +19,6 @@ export class SelectDirective implements OnDestroy {
     private store: Store<NewProjectState>
   ) {
     this.activeEditorSyntax$ = store.pipe(select(getActiveEditorSyntax));
-    this.syntaxSub = this.activeEditorSyntax$.subscribe(syntax => {
-      $('#syntaxSelector').dropdown('set selected', syntax);
-    });
 
     setTimeout(() => {
       $('#syntaxSelector').dropdown({
@@ -30,7 +27,9 @@ export class SelectDirective implements OnDestroy {
         }
       });
 
-      $('#syntaxSelector').dropdown('set selected', 'Plain Text');
+      this.syntaxSub = this.activeEditorSyntax$.subscribe(syntax => {
+        $('#syntaxSelector').dropdown('set selected', syntax);
+      });
     }, 0);
   }
 

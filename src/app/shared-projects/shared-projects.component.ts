@@ -23,6 +23,11 @@ export class SharedProjectsComponent implements OnInit {
     private sharedProjectsStore: Store<SharedProjectsState>,
     private router: Router,
   ) {
+    // Required because of problems with redirection to same route with different params, see: https://stackoverflow.com/questions/48006629/angular-navigate-to-the-same-route-with-different-parameter
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+
     this.hostnameOrigin = window.location.origin;
     
     this.sharedProjects$ = this.sharedProjectsStore.pipe(select(getSharedProjects));

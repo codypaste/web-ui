@@ -1,8 +1,8 @@
 <div *ngIf="(sharedProjectsAmount$ | async) > 0" class="ui card share-box">
-  <div class="content">
+  <div class="content header">
     <div class="header">Your shared projects</div>
   </div>
-  <div class="content">
+  <div class="content projectsList">
     <div class="ui relaxed divided list" *ngFor="let sharedProject of sharedProjects$ | async | reverse; index as i">
       <div class="item project">
         <div class="right floated content">

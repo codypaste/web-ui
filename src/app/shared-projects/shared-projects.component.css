@@ -1,3 +1,13 @@
+.projectsList {
+  overflow-x: scroll;
+  overflow-y: auto;
+  max-height: 20em;
+}
+
+.projectsList::-webkit-scrollbar { 
+  display: none; 
+}
+
 .project {
   padding-top: 0.1em;
 }

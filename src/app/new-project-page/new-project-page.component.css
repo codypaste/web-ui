@@ -1,6 +1,6 @@
 .new-project-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: max-content 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: max-content max-content max-content 1fr 1fr 1fr max-content;
   height: 100%;
   width: 100%;
@@ -16,21 +16,13 @@
   margin-bottom: 0.5rem;
   border-right: 1px solid #eee;
   padding-right: 0.5rem;
+  padding-left: 0.1rem;
+  overflow: hidden;
 }
 
 .SharedProjects {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 5;
-  grid-row-end: 7;
-
-  /* overflow: scroll; */
-
   margin-top: 1rem;
-  margin-left: 0.5rem;
   margin-bottom: 0.5rem;
-  border-right: 1px solid #eee;
-  padding-right: 0.5rem;
 }
 
 .Header {
@@ -53,7 +45,7 @@
   margin: 0 auto; 
   width: 260%; 
   padding-top: 1em;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid rgb(211, 211, 211);
 }
 
 .Footer {
@@ -62,10 +54,10 @@
   grid-row-start: 7;
   grid-row-end: 8;
 
-  background-color: #303F9F;
+  background-color: rgb(211, 211, 211);
   color: #C5CAE9;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }

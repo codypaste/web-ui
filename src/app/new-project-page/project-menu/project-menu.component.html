@@ -45,8 +45,12 @@
     </div>
   </div>
 
-  <button type="submit" [disabled]="!projectMenuForm.valid || isSubmitted" class="ui fluid inverted primary button">
-    <i class="share alternate icon"></i>
-    Share
-  </button>
+  <div class="ui card share-box">
+    <div class="content">
+      <button (click)="editProject()" class="fluid ui primary inverted icon button">
+        <i class="share alternate icon"></i>   
+        Share
+      </button>
+    </div>
+  </div>
 </form>

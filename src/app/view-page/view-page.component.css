@@ -20,17 +20,8 @@
 }
 
 .SharedProjects {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 6;
-  grid-row-end: 6;
-
-  overflow: scroll;
-  
-  margin-left: 0.5rem;
+  margin-top: 1rem;
   margin-bottom: 0.5rem;
-  border-right: 1px solid #eee;
-  padding-right: 0.5rem;
 }
 
 .Footer {
@@ -39,10 +30,10 @@
   grid-row-start: 7;
   grid-row-end: 8;
 
-  background-color: #303F9F;
+  background-color: #F7F7F7;
   color: #C5CAE9;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }

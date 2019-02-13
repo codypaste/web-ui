@@ -12,7 +12,7 @@ export interface NewProjectState {
   activeEditor: EditorModel;
 }
 
-const setDefaultSnippetName = editorIndex => `Snippet_${editorIndex}`;
+const setDefaultSnippetName = editorIndex => `Untitled-${editorIndex}`;
 
 const getInitialEditor = (editorIndex) => {
   const x = new EditorModel();

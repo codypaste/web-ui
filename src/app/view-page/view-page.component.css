@@ -19,6 +19,20 @@
   padding-right: 0.5rem;
 }
 
+.SharedProjects {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 6;
+  grid-row-end: 6;
+
+  overflow: scroll;
+  
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-right: 1px solid #eee;
+  padding-right: 0.5rem;
+}
+
 .Footer {
   grid-column-start: 1;
   grid-column-end: 8;

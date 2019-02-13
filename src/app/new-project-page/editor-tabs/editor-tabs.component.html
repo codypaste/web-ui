@@ -2,7 +2,7 @@
   <a class="item" *ngFor="let editor of editors$ | async; index as i" (click)="switchActiveEditor(i)" [ngClass]="{
       'active tab-switch': editor.id === (activeEditor$ | async).id
     }">
-    {{editor.title || 'unnamed'}}
+    {{editor.title || 'Untitled'}}
     <i (click)="onCloseEditor(i)" *ngIf="editor.id === (activeEditor$ | async).id && (numberOfOpenedEditors$ | async) > 1"
       class="times circle outline icon close-tab-icon"></i>
   </a>

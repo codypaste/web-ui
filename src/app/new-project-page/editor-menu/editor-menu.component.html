@@ -1,7 +1,7 @@
 <div class="ui form">
   <div class="fields no-bottom-margin">
     <div class="field">
-      <input [(ngModel)]="fileName" (change)="onFilenameChange()" type="text" placeholder="unnamed">
+      <input [(ngModel)]="fileName" (keyup)="onFilenameChange()" type="text">
     </div>
 
     <div appSelect class="field four wide">

@@ -134,7 +134,7 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
       const snippetsRequests = [];
       this.editors.forEach(editor => {
         const snippet = new SnippetModel();
-        snippet.group = res._id;
+        snippet.group = res.id;
         snippet.snippet = this.encryption.encrypt(editor.content || '', encryptionKey.key);
         snippet.snippetName = this.encryption.encrypt(editor.title || 'unnamed', encryptionKey.key);
         snippet.syntax = editor.syntax;
@@ -142,7 +142,7 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
       });
 
       await Promise.all(snippetsRequests);
-      this.router.navigate(['/view', res._id], {
+      this.router.navigate(['/view', res.id], {
         queryParams: {
           key: encryptionKey.normalized
         }

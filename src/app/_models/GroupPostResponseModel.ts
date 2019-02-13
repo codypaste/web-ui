@@ -5,6 +5,6 @@ export class GroupPostResponseModel {
   lastModifiedTimestamp: string;
   title: string;
   __v: number;
-  _id: string;
+  id: string;
   isEncrypted: boolean;
 }

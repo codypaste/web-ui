@@ -41,7 +41,7 @@ export class ViewPageComponent implements OnInit {
     group.title = isEncrypted ? this.encryption.decrypt(project.group.title, key) : project.group.title;
     group.expirationDatetime = project.group.expirationDatetime;
     group.isPublic = project.group.isPublic;
-    group._id = project.group._id;
+    group.id = project.group.id;
     group.createdAt = project.group.createdAt;
     group.isEncrypted = project.group.isEncrypted;
 
@@ -50,7 +50,7 @@ export class ViewPageComponent implements OnInit {
     const editors = [];
     project.snippets.forEach(s => {
       const e = new EditorModel();
-      e.id = s._id;
+      e.id = s.id;
       e.content = isEncrypted ? this.encryption.decrypt(s.snippet, key) : s.snippet;
       e.title = isEncrypted ? this.encryption.decrypt(s.snippetName, key) : s.snippetName;
       e.syntax = s.syntax;

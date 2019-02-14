@@ -81,9 +81,9 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
   }
 
   saveSharedProjectInStorage(sharedGroup: GroupPostResponseModel, encryptionKey: string) {
-    const {createdAt, title, _id, isEncrypted} = sharedGroup;
+    const {createdAt, title, id, isEncrypted} = sharedGroup;
     const decryptedTitle = isEncrypted ? this.encryption.decrypt(title, encryptionKey) : title;
-    const project = new LocalStorageProjectModel(_id, decryptedTitle, createdAt, encryptionKey)
+    const project = new LocalStorageProjectModel(id, decryptedTitle, createdAt, encryptionKey)
     
     this.sharedProjectsStore.dispatch(
       new fromStorageStoreActions.addSharedProjectToLocalStorage(project)

@@ -5,6 +5,9 @@
 /tmp
 /out-tsc
 
+semantic
+semantic.json
+
 # dependencies
 /node_modules
 

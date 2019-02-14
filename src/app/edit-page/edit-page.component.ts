@@ -37,7 +37,7 @@ export class EditPageComponent implements OnInit {
     group.title = isEncrypted ? this.encryption.decrypt(project.group.title, key) : project.group.title;
     group.expirationDatetime = project.group.expirationDatetime;
     group.isPublic = project.group.isPublic;
-    group._id = project.group._id;
+    group.id = project.group.id;
     group.createdAt = project.group.createdAt;
     group.isEncrypted = project.group.isEncrypted;
 

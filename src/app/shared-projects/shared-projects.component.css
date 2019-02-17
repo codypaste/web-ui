@@ -1,5 +1,5 @@
 .projectsList {
-  overflow-x: scroll;
+  overflow-x: hidden;
   overflow-y: auto;
   max-height: 20em;
 }

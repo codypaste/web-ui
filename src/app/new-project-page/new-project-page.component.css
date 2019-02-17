@@ -43,9 +43,9 @@
   content: ""; 
   display: block; 
   margin: 0 auto; 
-  width: 260%; 
+  width: 200%; 
   padding-top: 1em;
-  border-bottom: 2px solid rgb(211, 211, 211);
+  border-bottom: 1px solid #4CBCFF;
 }
 
 .Footer {
@@ -54,10 +54,9 @@
   grid-row-start: 7;
   grid-row-end: 8;
 
-  background-color: rgb(211, 211, 211);
-  color: #C5CAE9;
-  padding-top: 0.6rem;
-  padding-bottom: 0.6rem;
+  background-color: #327A9F;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }

@@ -1,11 +1,14 @@
 <div class="ui form">
   <div class="fields no-bottom-margin">
-    <div class="field">
-      <input [(ngModel)]="fileName" (keyup)="onFilenameChange()" type="text">
+    <div class="field three wide">
+      <div class="ui left icon input">
+        <input [(ngModel)]="fileName" (keyup)="onFilenameChange()" type="text">
+        <i class="file outline icon"></i>
+      </div>
     </div>
 
-    <div appSelect class="field four wide">
-      <div id="syntaxSelector" class="ui fluid search selection dropdown">
+    <div appSelect class="field three wide">
+      <div id="syntaxSelector" class="ui search selection dropdown">
         <input type="hidden" name="syntax">
         <i class="dropdown icon"></i>
         <div class="default text">Select syntax</div>
@@ -14,6 +17,5 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>

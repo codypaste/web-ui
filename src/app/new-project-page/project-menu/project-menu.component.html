@@ -12,7 +12,7 @@
     <div class="content">
       <div class="field">
         <label>Expiration</label>
-        <select class="ui fluid dropdown" formControlName="expiration">
+        <select class="ui dropdown" formControlName="expiration">
           <option value="-1">Never</option>
           <option value="PT5M">5 minutes</option>
           <option value="PT15M">15 minutes</option>
@@ -31,7 +31,7 @@
     <div class="content">
       <div class="field">
         <label>Visibility</label>
-        <select id="visibilitySelector" class="ui fluid dropdown" formControlName="visibility">
+        <select id="visibilitySelector" class="ui dropdown" formControlName="visibility">
           <option value="public">Public - available to anyone</option>
           <option value="private">Private - password will be required</option>
         </select>
@@ -44,13 +44,8 @@
       </div>
     </div>
   </div>
-
-  <div class="ui card share-box">
-    <div class="content">
-      <button class="fluid ui primary inverted icon button">
-        <i class="share alternate icon"></i>   
-        Share
-      </button>
-    </div>
-  </div>
+  <button type="submit" [disabled]="!projectMenuForm.valid || isSubmitted" class="fluid ui primary inverted icon share button">
+    <i class="share alternate icon"></i>   
+    Share
+  </button>
 </form>

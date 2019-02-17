@@ -1,0 +1,51 @@
+.contact-container {
+  display: grid;
+  grid-template-columns: max-content 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: max-content max-content max-content 1fr 1fr 1fr max-content;
+  height: 100%;
+  width: 100%;
+}
+
+.Header {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+
+  background-color: #ffffff;
+  color: #262626;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 0.5rem;
+}
+
+.Header:after {
+  content: ""; 
+  display: block; 
+  margin: 0 auto; 
+  width: 200%; 
+  padding-top: 1em;
+  border-bottom: 1px solid #4CBCFF;
+}
+
+.Footer {
+  grid-column-start: 1;
+  grid-column-end: 8;
+  grid-row-start: 7;
+  grid-row-end: 8;
+
+  background-color: #327A9F;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.contact {
+  grid-column-start: 4;
+  grid-column-end: 6;
+  grid-row-start: 3;
+  grid-row-end: 6;
+  align-self: center;
+}

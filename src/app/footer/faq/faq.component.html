@@ -1,0 +1,44 @@
+<div class="faq-container">
+  <div class="Header">
+    <app-header></app-header>
+  </div>
+  <div class="Footer">
+    <app-footer></app-footer>
+  </div>
+  <div class="faq">
+    <h2 class="ui center aligned icon header">
+      <i class="circular question icon"></i>
+      FAQ
+    </h2>
+    <div class="gap"></div>
+    <div class="ui questions list">
+      <div class="item">
+        <div class="ui center aligned header">
+          1. What does it mean that my project is Encrypted? 
+        </div>
+        <div class="ui center aligned">
+          As you could probably see, we attach key in your snippets URL. It is generated whenever you click 'Share', and whatever you have pasted
+          and shared using CODYPASTE, gets encrypted. It means that <b>we do not collect your snippets source code, we only store its encrypted
+          version which could be readable only when mentioned key is provided by users</b>.
+        </div>
+        <div class="gap"></div>
+        <div class="ui center aligned header">
+          2. How do we remember your shared projects?
+        </div>
+        <div class="ui center aligned">
+          Shared projects are stored in local storage (read more about it <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">here</a>).
+          We do not store any private data (such as your snippets content), only id and encryption key, which are used to
+          construct URL for your data, whenever you chose any of previously shared projects from list. 
+          You can easily remove stored data from local storage, for more details follow <a href="https://mage2.pro/t/topic/1659">this article</a>.
+        </div>
+        <div class="ui center aligned header">
+          3. What data CODYPASTE.io collects and why?
+        </div>
+        <div class="ui center aligned">
+          We collect and store webserver logs like most websites on the internet and things that you have uploaded using our service in <b>encrypted form</b>.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  

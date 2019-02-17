@@ -31,7 +31,11 @@ import { EditPageComponent } from './edit-page/edit-page.component';
 import { HeaderComponent } from './header/header.component';
 import { SharedProjectsComponent } from './shared-projects/shared-projects.component';
 import { TimeElapsedPipe } from './shared-projects/time-elapsed.pipe'
-import { ReversePipe } from './shared-projects/reverse-local-storage.pipe'
+import { ReversePipe } from './shared-projects/reverse-local-storage.pipe';
+import { PrivacyPolicyComponent } from './footer/privacy-policy/privacy-policy.component';
+import { TermsOfServiceComponent } from './footer/terms-of-service/terms-of-service.component';
+import { FaqComponent } from './footer/faq/faq.component';
+import { ContactComponent } from './footer/contact/contact.component'
 
 @NgModule({
   declarations: [
@@ -57,7 +61,11 @@ import { ReversePipe } from './shared-projects/reverse-local-storage.pipe'
     HeaderComponent,
     SharedProjectsComponent,
     TimeElapsedPipe,
-    ReversePipe
+    ReversePipe,
+    PrivacyPolicyComponent,
+    TermsOfServiceComponent,
+    FaqComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

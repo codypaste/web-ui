@@ -3,3 +3,44 @@
   padding-left: 1em; 
   margin-top: 1em;
 }
+
+.help {
+  margin-left: 1rem;
+}
+
+.help .tooltiptext {
+  visibility: hidden;
+  width: 100%;
+  background-color: #3B789E;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 0.5em;
+  border-radius: 6px;
+
+  position: absolute;
+  z-index: 1;
+  bottom: 200%;
+  left: 2%;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+/* Tooltip arrow */
+.help .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 10%;
+  margin-left: -5%;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #3B789E transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.help:hover .tooltiptext {
+  visibility: visible;
+  opacity: 0.9;
+}

@@ -35,6 +35,7 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
     expiration: new FormControl('-1'),
     visibility: new FormControl('public'),
     password  : new FormControl(''),
+    shouldSaveSharedProject: new FormControl(true)
   });
 
   editors$: Observable<EditorModel[]>;
@@ -129,7 +130,9 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
 
     try {
       const res = await this.api.createGroup(group);
-      this.saveSharedProjectInStorage(res, encryptionKey.normalized)
+      if(this.projectMenuForm.get('shouldSaveSharedProject').value === true) {
+        this.saveSharedProjectInStorage(res, encryptionKey.normalized);
+      }
 
       const snippetsRequests = [];
       this.editors.forEach(editor => {

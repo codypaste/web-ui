@@ -1,0 +1,25 @@
+.content {
+  padding-top: 0.1em;
+  text-align: center;
+}
+
+.content:after {
+  content: ""; 
+  display: block; 
+  margin: 0 auto; 
+  width:100%; 
+  padding-top: 1em;
+  border-bottom: 1px solid #c2c2c2;
+  animation: line 0.5s linear forwards;
+}
+
+@keyframes line {
+  from {
+    left:50%;
+    width:0%;
+  }
+  to {
+    left:5%;
+    width:100%;
+  }
+}

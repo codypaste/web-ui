@@ -6,31 +6,31 @@
     <div class="ui feed">
       <div class="event">
         <div class="content">
-          <div class="date">
-            Created
-          </div>
           <div class="summary">
-              {{ normalizeDate(group.createdAt)}}
+            Created: 
+            <div class="date">
+              {{ normalizeDate(group.createdAt) }}
+            </div>
           </div>
         </div>
       </div>
       <div class="event">
         <div class="content">
-          <div class="date">
-            Expiration
-          </div>
           <div class="summary">
-            {{ group.expirationDatetime ? normalizeDate(group.expirationDatetime) : 'Never' }}
+            Expiration: 
+            <div class="date">
+              {{ group.expirationDatetime ? normalizeDate(group.expirationDatetime) : 'Never' }}
+            </div>
           </div>
         </div>
       </div>
       <div class="event">
         <div class="content">
-          <div class="date">
-            Visibility
-          </div>
           <div class="summary">
-            {{ group.isPublic ? 'Public' : 'Protected with password' }}
+            Visibility:
+            <div class="date">
+              {{ group.isPublic ? 'Public' : 'Protected with password' }}
+            </div>
           </div>
         </div>
       </div>

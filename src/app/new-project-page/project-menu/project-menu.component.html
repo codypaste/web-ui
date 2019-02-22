@@ -43,6 +43,23 @@
         </div>
       </div>
     </div>
+    <div class="content">
+      <div class="field">
+        <div class="ui slider saveProject checkbox">
+          <input type="checkbox" formControlName="shouldSaveSharedProject">
+          <label>
+            Save to shared projects 
+            <i class="question circle outline help icon">
+              <span class="tooltiptext">Save shared project to local storage, so that it will be easier for you to access later</span>
+            </i>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="ui special popup">
+      <div class="header">User Rating</div>
+      <div class="ui star rating" data-rating="3"></div>
+    </div>
   </div>
   <button type="submit" [disabled]="!projectMenuForm.valid || isSubmitted" class="fluid ui primary inverted icon share button">
     <i class="share alternate icon"></i>   

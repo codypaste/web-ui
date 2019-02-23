@@ -46,7 +46,7 @@ export class EditPageComponent implements OnInit {
     const editors = [];
     project.snippets.forEach(s => {
       const e = new EditorModel();
-      e.id = s._id;
+      e.id = s.id;
       e.content = isEncrypted ? this.encryption.decrypt(s.snippet, key) : s.snippet;
       e.title = isEncrypted ? this.encryption.decrypt(s.snippetName, key) : s.snippetName;
       e.syntax = s.syntax;
@@ -80,6 +80,5 @@ export class EditPageComponent implements OnInit {
 
   ngOnInit() {
     this.retrieveProject('');
-    this._titleService.setTitle('Edit project | CODYPASTE');
   }
 }

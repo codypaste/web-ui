@@ -3,23 +3,33 @@
   text-align: center;
 }
 
-.content:after {
+.summary:after {
   content: ""; 
   display: block; 
   margin: 0 auto; 
   width:100%; 
   padding-top: 1em;
   border-bottom: 1px solid #c2c2c2;
-  animation: line 0.5s linear forwards;
+  animation: line 1s linear forwards;
 }
 
 @keyframes line {
-  from {
+  0% {
     left:50%;
     width:0%;
   }
-  to {
+  50% {
+    left:5%;
+    width:70%;
+  }
+  80% {
+    left:50%;
+    width:0%;
+    border-bottom: 1px solid #c2c2c2;
+  }
+  100% {
     left:5%;
     width:100%;
+    border-bottom: 1px solid #4CBCFF;
   }
 }

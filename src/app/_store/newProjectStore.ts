@@ -123,6 +123,7 @@ export function reducer(state = initialState, action: fromActions.ALL_ACTIONS): 
         editor = e;
         return e;
       });
+      
       return {
         ...state,
         editors: newEditors,
@@ -143,6 +144,7 @@ export function reducer(state = initialState, action: fromActions.ALL_ACTIONS): 
 
     case fromActions.SET_GROUP_TO_EDIT: {
       const snippetsGroup = action.payload;
+
       return {
         ...state,
         snippetsGroup

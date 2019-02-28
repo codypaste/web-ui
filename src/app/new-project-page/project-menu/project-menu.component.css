@@ -11,7 +11,7 @@
 .help .tooltiptext {
   visibility: hidden;
   width: 100%;
-  background-color: #3B789E;
+  background-color: #26A69A;
   color: rgb(255, 255, 255);
   text-align: center;
   padding: 0.5em;
@@ -37,7 +37,7 @@
   margin-left: -5%;
   border-width: 5px;
   border-style: solid;
-  border-color: #3B789E transparent transparent transparent;
+  border-color: #26A69A transparent transparent transparent;
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */

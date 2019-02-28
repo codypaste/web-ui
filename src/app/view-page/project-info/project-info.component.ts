@@ -36,5 +36,4 @@ export class ProjectInfoComponent implements OnInit, OnDestroy {
   normalizeDate(date) {
     return moment(date).format('YYYY-MM-DD HH:mm');
   }
-
 }

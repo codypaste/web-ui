@@ -3,7 +3,7 @@ a {
 }
 
 a:hover {
-  color: #4cbcff;
+  color: rgb(110, 109, 109);
 }
 
 .ui.divided.horizontal.list > .item {

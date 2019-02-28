@@ -5,9 +5,12 @@
 export const environment = {
   production: false,
   maxEditors: 5,
-  snippetsEndpoint: 'http://localhost:3000/snippets',
-  groupsEndpoint: 'http://localhost:3000/groups',
-  retrieveProjectEndpoint: 'http://localhost:3000/groups/_search',
+  snippetsEndpoint: 'https://api.codypaste.io/snippets',
+  // snippetsEndpoint: 'http://localhost:3000/snippets',
+  groupsEndpoint: 'https://api.codypaste.io/groups',
+  // groupsEndpoint: 'http://localhost:3000/groups',
+  retrieveProjectEndpoint: 'https://api.codypaste.io/groups/_search',
+  // retrieveProjectEndpoint: 'https://localhost:3000/groups/_search',
 
 };
 

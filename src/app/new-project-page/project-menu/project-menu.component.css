@@ -21,6 +21,7 @@
   z-index: 1;
   bottom: 200%;
   left: 2%;
+  font-family: sans-serif;
 
   /* Fade in tooltip */
   opacity: 0;

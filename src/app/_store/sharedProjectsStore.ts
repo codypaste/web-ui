@@ -54,7 +54,7 @@ export function reducer(state = setInitialState(), action: fromActions.ALL_ACTIO
         sharedProjects: projectsInStorage, 
         sharedProjectsNum: projectsInStorage.length
       }
-    }
+    };
 
     case fromActions.CLEAR_PROJECTS_FROM_LOCAL_STORAGE: {
       localStorage.clear();
@@ -64,7 +64,7 @@ export function reducer(state = setInitialState(), action: fromActions.ALL_ACTIO
         sharedProjects: projectsInStorage, 
         sharedProjectsNum: projectsInStorage.length
       }
-    }
+    };
 
     default:
       return state;

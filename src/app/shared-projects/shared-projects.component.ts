@@ -16,8 +16,6 @@ export class SharedProjectsComponent implements OnInit {
 
   sharedProjects$: Observable<LocalStorageProjectModel[]>;
   sharedProjectsAmount$: Observable<number>;
-  hostnameOrigin: string;
-
 
   constructor(
     private sharedProjectsStore: Store<SharedProjectsState>,
@@ -27,9 +25,6 @@ export class SharedProjectsComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
-
-    this.hostnameOrigin = window.location.origin;
-    
     this.sharedProjects$ = this.sharedProjectsStore.pipe(select(getSharedProjects));
     this.sharedProjectsAmount$ = this.sharedProjectsStore.pipe(select(getAmountOfSharedProjects));
   }

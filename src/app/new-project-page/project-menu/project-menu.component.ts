@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 import { SharedProjectsState } from 'src/app/_store/sharedProjectsStore';
 import { GroupPostResponseModel } from 'src/app/_models/GroupPostResponseModel';
 import { LocalStorageProjectModel } from 'src/app/_models/LocalStorageProjectModel';
-import * as fromStorageStoreActions from 'src/app/_store/sharedProjectsStoreActions'
+import * as fromStorageStoreActions from 'src/app/_store/sharedProjectsStoreActions';
 
 @Component({
   selector: 'app-project-menu',

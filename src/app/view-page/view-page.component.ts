@@ -8,9 +8,11 @@ import { ApiService } from 'src/app/_services/api.service';
 import { EncryptionService } from 'src/app/_services/encryption.service';
 import { ViewState } from 'src/app/_store/viewStore';
 import * as fromActions from 'src/app/_store/viewStoreActions';
+import * as fromStorageStoreActions from 'src/app/_store/sharedProjectsStoreActions'
 import { GroupModel } from 'src/app/_models/GroupModel';
 import { EditorModel } from 'src/app/_models/EditorModel';
 import { ErrorTypes } from '../_utils/errors';
+import { SharedProjectsState } from '../_store/sharedProjectsStore';
 
 @Component({
   selector: 'app-view-page',
@@ -29,6 +31,7 @@ export class ViewPageComponent implements OnInit {
     private route: ActivatedRoute,
     private store: Store<ViewState>,
     private encryption: EncryptionService,
+    private sharedProjectsStore: Store<SharedProjectsState>,
     private _titleService: Title,
     private _router: Router,
   ) { }
@@ -79,6 +82,11 @@ export class ViewPageComponent implements OnInit {
         this._router.navigateByUrl('/encryption-error', { skipLocationChange: true });
         return;
       }
+
+      // Remove not found project from local storage if it was present there
+      this.sharedProjectsStore.dispatch(
+        new fromStorageStoreActions.removeProjectFromLocalStoreAction(id)
+      );
 
       this._router.navigateByUrl('/not-found', { skipLocationChange: true });
     }

@@ -4,7 +4,7 @@ start:
 	ng serve
 
 build-ng:
-	ng build --aot --prod --optimization --build-optimizer --service-worker
+	ng build --aot --prod --optimization --build-optimizer --service-worker --stats-json
 
 build-image:
 	docker build -t 140303875034.dkr.ecr.eu-west-1.amazonaws.com/codypaste-ui:$(IMAGE_TAG) .

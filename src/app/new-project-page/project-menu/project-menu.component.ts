@@ -3,13 +3,21 @@ import { FormGroup, FormControl, ValidationErrors } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { Subscription, Observable } from 'rxjs';
 import { Validators } from '@angular/forms';
-import * as moment from 'moment';
+
+import * as addMinutes from 'date-fns/add_minutes';
+import * as addHours from 'date-fns/add_hours';
+import * as addDays from 'date-fns/add_days';
+import * as addMonths from 'date-fns/add_months';
 
 import { ApiService } from 'src/app/_services/api.service';
 import { EditorModel } from 'src/app/_models/EditorModel';
 import { EncryptionService } from 'src/app/_services/encryption.service';
 import { GroupModel } from 'src/app/_models/GroupModel';
-import { NewProjectState, getEditors , getSnippetsGroup } from 'src/app/_store/newProjectStore';
+import {
+  NewProjectState,
+  getEditors,
+  getSnippetsGroup
+} from 'src/app/_store/newProjectStore';
 import { SnippetModel } from 'src/app/_models/SnippetModel';
 import { ToastrService } from 'src/app/_services/toastr.service';
 import { Router } from '@angular/router';
@@ -24,7 +32,6 @@ import * as fromStorageStoreActions from 'src/app/_store/sharedProjectsStoreActi
   styleUrls: ['./project-menu.component.css']
 })
 export class ProjectMenuComponent implements OnInit, OnDestroy {
-
   isPublic = true;
   errors: ValidationErrors;
   visibilitySub: Subscription;
@@ -34,7 +41,7 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
     title: new FormControl(''),
     expiration: new FormControl('-1'),
     visibility: new FormControl('public'),
-    password  : new FormControl(''),
+    password: new FormControl(''),
     shouldSaveSharedProject: new FormControl(true)
   });
 
@@ -51,29 +58,33 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
     private sharedProjectsStore: Store<SharedProjectsState>,
     private encryption: EncryptionService,
     private toastr: ToastrService,
-    private router: Router,
+    private router: Router
   ) {
     this.snippetsGroup$ = this.newProjectStore.pipe(select(getSnippetsGroup));
-    this.groupSub = this.snippetsGroup$.subscribe(res => this.group = res);
-    
+    this.groupSub = this.snippetsGroup$.subscribe(res => (this.group = res));
+
     this.editors$ = this.newProjectStore.pipe(select(getEditors));
-    this.editorsSub = this.editors$.subscribe(res => this.editors = res);
+    this.editorsSub = this.editors$.subscribe(res => (this.editors = res));
   }
 
   ngOnInit() {
-    this.visibilitySub = this.projectMenuForm.get('visibility').valueChanges.subscribe(val => {
-      if (val === 'private') {
-        this.isPublic = false;
-        this.projectMenuForm.get('password').setValidators([Validators.required]);
+    this.visibilitySub = this.projectMenuForm
+      .get('visibility')
+      .valueChanges.subscribe(val => {
+        if (val === 'private') {
+          this.isPublic = false;
+          this.projectMenuForm
+            .get('password')
+            .setValidators([Validators.required]);
+          this.projectMenuForm.get('password').setValue('');
+          this.projectMenuForm.get('password').updateValueAndValidity();
+          return;
+        }
+        this.isPublic = true;
+        this.projectMenuForm.get('password').clearValidators();
         this.projectMenuForm.get('password').setValue('');
         this.projectMenuForm.get('password').updateValueAndValidity();
-        return;
-      }
-      this.isPublic = true;
-      this.projectMenuForm.get('password').clearValidators();
-      this.projectMenuForm.get('password').setValue('');
-      this.projectMenuForm.get('password').updateValueAndValidity();
-    });
+      });
   }
 
   ngOnDestroy() {
@@ -81,11 +92,21 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
     this.editorsSub.unsubscribe();
   }
 
-  saveSharedProjectInStorage(sharedGroup: GroupPostResponseModel, encryptionKey: string) {
-    const {createdAt, title, id, isEncrypted} = sharedGroup;
-    const decryptedTitle = isEncrypted ? this.encryption.decrypt(title, encryptionKey) : title;
-    const project = new LocalStorageProjectModel(id, decryptedTitle, createdAt, encryptionKey)
-    
+  saveSharedProjectInStorage(
+    sharedGroup: GroupPostResponseModel,
+    encryptionKey: string
+  ) {
+    const { createdAt, title, id, isEncrypted } = sharedGroup;
+    const decryptedTitle = isEncrypted
+      ? this.encryption.decrypt(title, encryptionKey)
+      : title;
+    const project = new LocalStorageProjectModel(
+      id,
+      decryptedTitle,
+      createdAt,
+      encryptionKey
+    );
+
     this.sharedProjectsStore.dispatch(
       new fromStorageStoreActions.addSharedProjectToLocalStorage(project)
     );
@@ -112,11 +133,58 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
 
     const expirationDuration = this.projectMenuForm.get('expiration').value;
     let expirationDatetime;
-    if (expirationDuration !== '-1') {
-      expirationDatetime = moment().add(moment.duration(expirationDuration)).format();
+
+    // there is no better way to do it probably, date-fns does not handle ISO8601 durations
+    // https://github.com/date-fns/date-fns/issues/284
+    switch (expirationDuration) {
+      case 'PT5M': {
+        expirationDatetime = addMinutes(new Date(), 5).toISOString();
+        break;
+      }
+      case 'PT15M': {
+        expirationDatetime = addMinutes(new Date(), 15).toISOString();
+        break;
+      }
+      case 'PT30M': {
+        expirationDatetime = addMinutes(new Date(), 30).toISOString();
+        break;
+      }
+      case 'PT1H': {
+        expirationDatetime = addHours(new Date(), 1).toISOString();
+        break;
+      }
+      case 'PT12H': {
+        expirationDatetime = addHours(new Date(), 12).toISOString();
+        break;
+      }
+      case 'P1D': {
+        expirationDatetime = addDays(new Date(), 1).toISOString();
+        break;
+      }
+      case 'P7D': {
+        expirationDatetime = addDays(new Date(), 7).toISOString();
+        break;
+      }
+      case 'P14D': {
+        expirationDatetime = addDays(new Date(), 14).toISOString();
+        break;
+      }
+      case 'P1M': {
+        expirationDatetime = addMonths(new Date(), 1).toISOString();
+        break;
+      }
+      case 'P6M': {
+        expirationDatetime = addMonths(new Date(), 6).toISOString();
+        break;
+      }
+      case 'P1Y': {
+        expirationDatetime = addMonths(new Date(), 12).toISOString();
+        break;
+      }
     }
 
-    const isPublic = this.projectMenuForm.get('visibility').value === 'public' ? true : false;
+    const isPublic =
+      this.projectMenuForm.get('visibility').value === 'public' ? true : false;
     const group = new GroupModel();
     group.title = this.projectMenuForm.get('title').value || this.group.title;
     group.isPublic = isPublic;
@@ -130,7 +198,7 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
 
     try {
       const res = await this.api.createGroup(group);
-      if(this.projectMenuForm.get('shouldSaveSharedProject').value === true) {
+      if (this.projectMenuForm.get('shouldSaveSharedProject').value === true) {
         this.saveSharedProjectInStorage(res, encryptionKey.normalized);
       }
 
@@ -138,8 +206,14 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
       this.editors.forEach(editor => {
         const snippet = new SnippetModel();
         snippet.group = res.id;
-        snippet.snippet = this.encryption.encrypt(editor.content || '', encryptionKey.key);
-        snippet.snippetName = this.encryption.encrypt(editor.title || 'unnamed', encryptionKey.key);
+        snippet.snippet = this.encryption.encrypt(
+          editor.content || '',
+          encryptionKey.key
+        );
+        snippet.snippetName = this.encryption.encrypt(
+          editor.title || 'unnamed',
+          encryptionKey.key
+        );
         snippet.syntax = editor.syntax;
         snippetsRequests.push(this.api.createSnippet(snippet));
       });
@@ -158,5 +232,4 @@ export class ProjectMenuComponent implements OnInit, OnDestroy {
 
     this.isSubmitted = false;
   }
-
 }

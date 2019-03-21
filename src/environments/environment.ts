@@ -6,11 +6,11 @@ export const environment = {
   production: false,
   maxEditors: 5,
   // snippetsEndpoint: 'https://api.codypaste.io/snippets',
-  snippetsEndpoint: 'http://localhost:3000/snippets',
+  snippetsEndpoint: 'http://localhost/snippets',
   // groupsEndpoint: 'https://api.codypaste.io/groups',
-  groupsEndpoint: 'http://localhost:3000/groups',
+  groupsEndpoint: 'http://localhost/groups',
   // retrieveProjectEndpoint: 'https://api.codypaste.io/groups/_search',
-  retrieveProjectEndpoint: 'https://localhost:3000/groups/_search',
+  retrieveProjectEndpoint: 'http://localhost/groups/_search',
 };
 
 /*

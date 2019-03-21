@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-import * as moment from 'moment';
+import * as parse from 'date-fns/parse';
+import * as format from 'date-fns/format';
 import { ViewState, getGroup } from 'src/app/_store/viewStore';
 import { GroupModel } from 'src/app/_models/GroupModel';
 
@@ -34,6 +35,7 @@ export class ProjectInfoComponent implements OnInit, OnDestroy {
   }
 
   normalizeDate(date) {
-    return moment(date).format('YYYY-MM-DD HH:mm');
+    const jsDate = parse(date);
+    return format(jsDate, 'YYYY-MM-DD HH:mm');
   }
 }

@@ -5,9 +5,6 @@
 /tmp
 /out-tsc
 
-semantic
-semantic.json
-
 # dependencies
 /node_modules
 
@@ -41,3 +38,11 @@ testem.log
 .DS_Store
 Thumbs.db
 package-lock.json
+
+# Semantic
+semantic/dist
+semantic/tasks
+semantic/gulpfile.js
+semantic/src/themes/*
+!semantic/src/themes/default
+!semantic/src/themes/codypaste

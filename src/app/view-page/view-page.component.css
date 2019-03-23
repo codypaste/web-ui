@@ -39,7 +39,7 @@
 
 .Header {
   grid-column-start: 1;
-  grid-column-end: 7;
+  grid-column-end: 8;
   grid-row-start: 1;
   grid-row-end: 2;
 
@@ -49,14 +49,6 @@
   padding-bottom: 0.5rem;
   padding-left: 1rem;
   padding-right: 0.5rem;
-}
-
-.Header:after {
-  content: ""; 
-  display: block; 
-  margin: 0 auto; 
-  width: 100%;  
-  padding-top: 1em;
   border-bottom: 1px solid #26A69A;
 }
 

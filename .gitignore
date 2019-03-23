@@ -45,4 +45,3 @@ semantic/tasks
 semantic/gulpfile.js
 semantic/src/themes/*
 !semantic/src/themes/default
-!semantic/src/themes/codypaste

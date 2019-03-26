@@ -41,7 +41,3 @@ package-lock.json
 
 # Semantic
 semantic/dist
-semantic/tasks
-semantic/gulpfile.js
-semantic/src/themes/*
-!semantic/src/themes/default

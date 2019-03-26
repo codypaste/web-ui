@@ -1,5 +1,5 @@
 <div *ngIf="!dataLoaded && !requiresPassword" class="view-page-container">
-  <div class="Header">  
+  <div class="Header">
     <app-header></app-header>
   </div>
   <div class="Footer">
@@ -18,7 +18,7 @@
 </div>
 
 <div *ngIf="requiresPassword" class="view-page-container">
-  <div class="Header">  
+  <div class="Header">
     <app-header></app-header>
   </div>
   <div class="Footer">
@@ -34,7 +34,13 @@
       <div class="fields w-100">
         <div class="field w-100">
           <label>Password</label>
-          <input appAutofocus [(ngModel)]="password" name="password" placeholder="Password" type="password">
+          <input
+            appAutofocus
+            [(ngModel)]="password"
+            name="password"
+            placeholder="Password"
+            type="password"
+          />
         </div>
       </div>
       <div (click)="onSubmit()" class="ui blue submit button w-100">Submit</div>
@@ -49,12 +55,6 @@
 </div>
 
 <div *ngIf="dataLoaded" class="view-page-container">
-  <div class="Header">  
-    <app-header></app-header>
-  </div>
-  <div class="Footer">
-    <app-footer></app-footer>
-  </div>
   <div class="Tabs">
     <app-editor-view-tabs></app-editor-view-tabs>
   </div>
@@ -62,10 +62,14 @@
     <app-view-editor></app-view-editor>
   </div>
   <div class="Menu">
+    <app-header></app-header>
     <app-project-info></app-project-info>
     <app-share></app-share>
     <div class="SharedProjects">
       <app-shared-projects></app-shared-projects>
     </div>
+  </div>
+  <div class="Footer">
+    <app-footer></app-footer>
   </div>
 </div>

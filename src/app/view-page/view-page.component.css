@@ -1,7 +1,7 @@
 .view-page-container {
   display: grid;
-  grid-template-columns: max-content 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: max-content max-content max-content 1fr 1fr 1fr max-content;
+  grid-template-columns: 1.3fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto 1fr 1fr 1fr 1fr auto;
   height: 100%;
   width: 100%;
 }
@@ -15,7 +15,6 @@
   margin-left: 0.5rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
-  border-right: 1px solid #eee;
   padding-right: 0.5rem;
 }
 
@@ -76,15 +75,15 @@
 }
 
 .PageLoader {
-  grid-column-start: 4;
+  grid-column-start: 3;
   grid-column-end: 6;
-  grid-row-start: 5;
-  grid-row-end: 6;
+  grid-row-start: 4;
+  grid-row-end: 5;
 }
 
 .PasswordForm {
-  grid-column-start: 4;
+  grid-column-start: 3;
   grid-column-end: 6;
-  grid-row-start: 5;
-  grid-row-end: 6;
+  grid-row-start: 4;
+  grid-row-end: 5;
 }

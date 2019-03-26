@@ -1,9 +1,6 @@
 <form [formGroup]="projectMenuForm" (ngSubmit)="onSubmit()" class="ui form">
   <div class="ui card share-box">
     <div class="content">
-      <div class="header">Project menu</div>
-    </div>
-    <div class="content">
       <div class="field">
         <label>Project name</label>
         <input type="text" placeholder={{group.title}} formControlName="title">
@@ -48,7 +45,7 @@
         <div class="ui slider checkbox">
           <input type="checkbox" formControlName="shouldSaveSharedProject">
           <label>
-            Save to shared projects 
+            Save to shared projects
             <i class="question circle outline help icon">
               <span class="tooltiptext">Save shared project to local storage, so that it will be easier for you to access those later</span>
             </i>
@@ -58,7 +55,7 @@
     </div>
   </div>
   <button type="submit" [disabled]="!projectMenuForm.valid || isSubmitted" class="fluid ui primary inverted icon share button">
-    <i class="share alternate icon"></i>   
+    <i class="share alternate icon"></i>
     Share
   </button>
 </form>

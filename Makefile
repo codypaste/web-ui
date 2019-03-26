@@ -4,7 +4,7 @@ ensure-semantic-ui:
 serve: ensure-semantic-ui
 	ng serve
 
-build:
+build: ensure-semantic-ui
 	ng build --aot --prod --optimization --build-optimizer --service-worker --stats-json
 
 .PHONY: build

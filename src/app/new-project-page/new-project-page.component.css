@@ -1,7 +1,7 @@
 .new-project-container {
   display: grid;
-  grid-template-columns: max-content 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: max-content max-content max-content 1fr 1fr 1fr max-content;
+  grid-template-columns: 1.3fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto 1fr 1fr 1fr 1fr auto;
   height: 100%;
   width: 100%;
 }
@@ -9,12 +9,12 @@
 .Menu {
   grid-column-start: 1;
   grid-column-end: 2;
-  grid-row-start: 2;
+  grid-row-start: 1;
   grid-row-end: 7;
 
+  margin-top: 0.5rem;
   margin-left: 0.5rem;
   margin-bottom: 0.5rem;
-  border-right: 1px solid #eee;
   padding-right: 0.5rem;
   padding-left: 0.1rem;
   overflow: hidden;
@@ -27,7 +27,7 @@
 
 .Header {
   grid-column-start: 1;
-  grid-column-end: 7;
+  grid-column-end: 8;
   grid-row-start: 1;
   grid-row-end: 2;
 
@@ -37,15 +37,6 @@
   padding-bottom: 0.5rem;
   padding-left: 1rem;
   padding-right: 0.5rem;
-}
-
-.Header:after {
-  content: ""; 
-  display: block; 
-  margin: 0 auto; 
-  width: 100%; 
-  padding-top: 1em;
-  border-bottom: 1px solid #26A69A;
 }
 
 .Footer {
@@ -64,8 +55,8 @@
 .Tabs {
   grid-column-start: 2;
   grid-column-end: 8;
-  grid-row-start: 2;
-  grid-row-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
 
   margin-top: 0.5rem;
   margin-left: 0.5rem;
@@ -75,8 +66,8 @@
 .EditorMenu {
   grid-column-start: 2;
   grid-column-end: 8;
-  grid-row-start: 3;
-  grid-row-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
   margin-top: 0.5rem;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
@@ -85,7 +76,7 @@
 .Editor {
   grid-column-start: 2;
   grid-column-end: 8;
-  grid-row-start: 4;
+  grid-row-start: 3;
   grid-row-end: 7;
 
   margin-top: 0.5rem;

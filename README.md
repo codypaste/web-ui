@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0fbe3a39-dae3-4e74-ad02-3b209a317da4/deploy-status)](https://app.netlify.com/sites/codypaste/deploys)
+
 # Codypaste
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.4.
